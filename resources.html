@@ -14,20 +14,16 @@
             --light: #FFFFFF;
             --accent: #FF6B6B;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--dark);
             color: var(--light);
             overflow-x: hidden;
         }
-        
+
+        /* ── HEADER ── */
         header {
             background: var(--secondary);
             padding: 15px 0;
@@ -35,589 +31,178 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
-        
-        header.scrolled {
-            padding: 10px 0;
-            background: rgba(37, 37, 37, 0.95);
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo i {
-            font-size: 32px;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        .nav-links li a {
-            text-decoration: none;
-            color: var(--light);
-            font-weight: 500;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-links li a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            bottom: -5px;
-            left: 0;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links li a:hover:after {
-            width: 100%;
-        }
-        
-        .nav-links li a:hover {
-            color: var(--primary);
-        }
-        
-        .donate-btn {
-            background: var(--primary);
-            padding: 10px 25px;
-            border-radius: 30px;
-            color: var(--secondary);
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary);
-        }
-        
-        .donate-btn:hover {
-            background: transparent;
-            color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(249, 237, 50, 0.2);
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--light);
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
+        header.scrolled { padding: 10px 0; background: rgba(37,37,37,0.95); }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 28px; font-weight: bold; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+        .logo i { font-size: 32px; }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links li a { text-decoration: none; color: var(--light); font-weight: 500; position: relative; transition: all 0.3s ease; }
+        .nav-links li a:after { content: ''; position: absolute; width: 0; height: 2px; background: var(--primary); bottom: -5px; left: 0; transition: width 0.3s ease; }
+        .nav-links li a:hover:after, .nav-links li a.active:after { width: 100%; }
+        .nav-links li a:hover, .nav-links li a.active { color: var(--primary); }
+        .donate-btn { background: var(--primary); padding: 10px 25px; border-radius: 30px; color: var(--secondary) !important; font-weight: bold; transition: all 0.3s ease; border: 2px solid var(--primary); }
+        .donate-btn:hover { background: transparent !important; color: var(--primary) !important; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(249,237,50,0.2); }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--light); font-size: 24px; cursor: pointer; }
+
+        /* ── HERO ── */
         .page-hero {
-            background: linear-gradient(135deg, rgba(249,237,50,0.8) 0%, rgba(255,242,37,0.8) 100%), url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            background: linear-gradient(135deg, rgba(249,237,50,0.85) 0%, rgba(255,242,37,0.85) 100%),
+                        url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
             color: var(--secondary);
             text-align: center;
             padding: 180px 20px 100px;
             position: relative;
-            overflow: hidden;
         }
-        
-        .page-hero h1 {
-            font-size: 3.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
-        }
-        
-        .breadcrumb {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease 0.2s forwards;
-            opacity: 0;
-        }
-        
-        .breadcrumb a {
-            color: var(--secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .breadcrumb a:hover {
-            color: var(--accent);
-        }
-        
-        .breadcrumb span {
-            margin: 0 10px;
-        }
-        
-        .section {
-            padding: 80px 20px;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-            text-align: center;
-            width: 100%;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 3px;
-            background: var(--primary);
-            bottom: -10px;
-            left: 25%;
-        }
-        
-        .resources-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        
-        .resource-tabs {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 40px;
-        }
-        
-        .tab-btn {
-            padding: 12px 25px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-radius: 30px;
-            color: var(--light);
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .tab-btn:hover {
-            background: rgba(249, 237, 50, 0.2);
-        }
-        
-        .tab-btn.active {
-            background: var(--primary);
-            color: var(--secondary);
-            font-weight: bold;
-        }
-        
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        
+        .page-hero h1 { font-size: 3.5rem; font-weight: bold; margin-bottom: 20px; animation: fadeInUp 1s ease; }
+        .breadcrumb { display: flex; justify-content: center; margin-bottom: 30px; animation: fadeInUp 1s ease 0.2s forwards; opacity: 0; }
+        .breadcrumb a { color: var(--secondary); text-decoration: none; transition: color 0.3s; }
+        .breadcrumb a:hover { color: var(--accent); }
+        .breadcrumb span { margin: 0 10px; }
+
+        /* ── SECTIONS ── */
+        .section { padding: 80px 20px; }
+        .section-title { font-size: 2.5rem; margin-bottom: 50px; color: var(--primary); position: relative; display: inline-block; text-align: center; width: 100%; }
+        .section-title:after { content: ''; position: absolute; width: 50%; height: 3px; background: var(--primary); bottom: -10px; left: 25%; }
+        .resources-intro { text-align: center; max-width: 800px; margin: 0 auto 60px; font-size: 1.1rem; line-height: 1.8; }
+
+        /* ── TABS ── */
+        .resource-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+        .tab-btn { padding: 12px 25px; background: rgba(255,255,255,0.1); border: none; border-radius: 30px; color: var(--light); font-family: 'Poppins', sans-serif; font-weight: 500; cursor: pointer; transition: all 0.3s ease; }
+        .tab-btn:hover { background: rgba(249,237,50,0.2); }
+        .tab-btn.active { background: var(--primary); color: var(--secondary); font-weight: bold; }
+
+        /* ── RESOURCE GRID ── */
+        .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+
         .resource-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255,255,255,0.05);
             border-radius: 15px;
             overflow: hidden;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             display: flex;
             flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.05);
         }
-        
-        .resource-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(249, 237, 50, 0.2);
+        .resource-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(249,237,50,0.15); border-color: rgba(249,237,50,0.2); }
+
+        /* Video cards get a special play overlay */
+        .resource-image { height: 200px; overflow: hidden; position: relative; }
+        .resource-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .resource-card:hover .resource-image img { transform: scale(1.08); }
+
+        .play-overlay {
+            position: absolute; inset: 0;
+            background: rgba(0,0,0,0.45);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s;
         }
-        
-        .resource-image {
-            height: 200px;
-            overflow: hidden;
+        .resource-card:hover .play-overlay { opacity: 1; }
+        .play-overlay i { font-size: 3rem; color: var(--primary); filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5)); }
+
+        /* PDF badge */
+        .pdf-corner {
+            position: absolute; top: 12px; right: 12px;
+            background: var(--accent);
+            color: #fff; font-size: 0.7rem; font-weight: 700;
+            padding: 3px 10px; border-radius: 20px;
+            letter-spacing: 0.06em;
         }
-        
-        .resource-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .resource-card:hover .resource-image img {
-            transform: scale(1.1);
-        }
-        
-        .resource-content {
-            padding: 25px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .resource-type {
-            display: inline-block;
-            padding: 5px 15px;
-            background: var(--primary);
-            color: var(--secondary);
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        
-        .resource-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        .resource-desc {
-            margin-bottom: 20px;
-            flex: 1;
-        }
-        
-        .resource-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-top: auto;
-        }
-        
+
+        .resource-content { padding: 25px; flex: 1; display: flex; flex-direction: column; }
+        .resource-type { display: inline-block; padding: 5px 15px; background: var(--primary); color: var(--secondary); border-radius: 30px; font-size: 0.8rem; font-weight: bold; margin-bottom: 15px; }
+        .resource-type.type-video { background: #FF3E3E; color: #fff; }
+        .resource-type.type-pdf   { background: var(--accent); color: #fff; }
+        .resource-type.type-app   { background: #4CAF50; color: #fff; }
+        .resource-type.type-book  { background: #9C27B0; color: #fff; }
+        .resource-type.type-podcast { background: #FF9800; color: #fff; }
+
+        .resource-title { font-size: 1.2rem; margin-bottom: 10px; color: var(--primary); line-height: 1.4; }
+        .resource-desc { margin-bottom: 15px; flex: 1; font-size: 0.93rem; line-height: 1.65; opacity: 0.85; }
+        .resource-source { font-size: 0.78rem; opacity: 0.55; margin-bottom: 12px; }
+        .resource-source i { margin-right: 4px; }
+
         .resource-link {
-            display: inline-block;
+            display: inline-flex; align-items: center; gap: 8px;
             padding: 10px 20px;
             background: var(--primary);
             color: var(--secondary);
-            border-radius: 5px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 0.88rem;
             transition: all 0.3s ease;
-            margin-top: 15px;
-            text-align: center;
-        }
-        
-        .resource-link:hover {
-            background: var(--light);
-            transform: translateY(-3px);
-        }
-        
-        .download-btn {
-            background: var(--accent);
-        }
-        
-        .emergency-section {
-            background: var(--secondary);
-            text-align: center;
-        }
-        
-        .emergency-cards {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .emergency-card {
-            background: rgba(255, 107, 107, 0.1);
-            border: 2px solid var(--accent);
-            border-radius: 15px;
-            padding: 30px;
-            width: 300px;
-            transition: all 0.3s ease;
-        }
-        
-        .emergency-card:hover {
-            background: rgba(255, 107, 107, 0.2);
-            transform: translateY(-5px);
-        }
-        
-        .emergency-icon {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-        
-        .emergency-title {
-            font-size: 1.5rem;
-            color: var(--accent);
-            margin-bottom: 15px;
-        }
-        
-        .emergency-number {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        
-        .newsletter {
-            background: linear-gradient(135deg, rgba(249,237,50,0.1) 0%, rgba(255,107,107,0.1) 100%);
-            text-align: center;
-        }
-        
-        .newsletter-form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            margin-top: auto;
             justify-content: center;
         }
-        
-        .newsletter-input {
-            flex: 1;
-            min-width: 300px;
-            padding: 15px 20px;
-            border-radius: 50px;
-            border: none;
-            background: rgba(255, 255, 255, 0.9);
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-        }
-        
-        .newsletter-input:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px var(--primary);
-        }
-        
-        .newsletter-btn {
-            padding: 15px 40px;
-            border-radius: 50px;
-            background: var(--primary);
-            color: var(--secondary);
-            border: none;
-            font-family: 'Poppins', sans-serif;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .newsletter-btn:hover {
-            background: var(--secondary);
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        footer {
-            background: var(--secondary);
-            padding: 60px 0 20px;
-            color: var(--light);
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-        }
-        
-        .footer-logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .footer-logo i {
-            font-size: 28px;
-        }
-        
-        .footer-desc {
-            margin-bottom: 20px;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background: var(--primary);
-            color: var(--secondary);
-            transform: translateY(-3px);
-        }
-        
-        .footer-title {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-title:after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 2px;
-            background: var(--primary);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            opacity: 0.8;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-            opacity: 1;
-            padding-left: 5px;
-        }
-        
-        .contact-info {
-            list-style: none;
-        }
-        
-        .contact-info li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        
-        .contact-info i {
-            color: var(--primary);
-            margin-top: 3px;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .nav-links {
-                gap: 15px;
-            }
-            
-            .page-hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .resource-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-        }
-        
+        .resource-link:hover { background: var(--light); transform: translateY(-2px); }
+        .resource-link.btn-video { background: #FF3E3E; color: #fff; }
+        .resource-link.btn-video:hover { background: #ff6060; }
+        .resource-link.btn-pdf { background: var(--accent); color: #fff; }
+        .resource-link.btn-pdf:hover { background: #ff8585; }
+
+        .resource-meta { display: flex; justify-content: space-between; font-size: 0.82rem; opacity: 0.65; margin-top: 12px; flex-wrap: wrap; gap: 6px; }
+
+        /* ── EMERGENCY ── */
+        .emergency-section { background: var(--secondary); text-align: center; }
+        .emergency-cards { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-top: 40px; }
+        .emergency-card { background: rgba(255,107,107,0.1); border: 2px solid var(--accent); border-radius: 15px; padding: 30px; width: 300px; transition: all 0.3s ease; }
+        .emergency-card:hover { background: rgba(255,107,107,0.2); transform: translateY(-5px); }
+        .emergency-icon { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
+        .emergency-title { font-size: 1.5rem; color: var(--accent); margin-bottom: 15px; }
+        .emergency-number { font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; }
+
+        /* ── NEWSLETTER ── */
+        .newsletter { background: linear-gradient(135deg, rgba(249,237,50,0.1) 0%, rgba(255,107,107,0.1) 100%); text-align: center; }
+        .newsletter-form { max-width: 600px; margin: 30px auto 0; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .newsletter-input { flex: 1; min-width: 280px; padding: 15px 20px; border-radius: 50px; border: none; background: rgba(255,255,255,0.9); font-family: 'Poppins', sans-serif; font-size: 1rem; }
+        .newsletter-input:focus { outline: none; box-shadow: 0 0 0 3px var(--primary); }
+        .newsletter-btn { padding: 15px 40px; border-radius: 50px; background: var(--primary); color: var(--secondary); border: none; font-family: 'Poppins', sans-serif; font-weight: bold; cursor: pointer; transition: all 0.3s; }
+        .newsletter-btn:hover { background: var(--secondary); color: var(--primary); transform: translateY(-3px); }
+
+        /* ── FOOTER ── */
+        footer { background: var(--secondary); padding: 60px 0 20px; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; margin-bottom: 40px; }
+        .footer-column { flex: 1; min-width: 220px; }
+        .footer-logo { font-size: 24px; font-weight: bold; color: var(--primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .footer-logo i { font-size: 28px; }
+        .footer-desc { margin-bottom: 20px; opacity: 0.8; line-height: 1.6; }
+        .social-links { display: flex; gap: 15px; }
+        .social-link { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; justify-content: center; align-items: center; color: var(--light); text-decoration: none; transition: all 0.3s; }
+        .social-link:hover { background: var(--primary); color: var(--secondary); transform: translateY(-3px); }
+        .footer-title { font-size: 1.2rem; color: var(--primary); margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+        .footer-title:after { content: ''; position: absolute; width: 40px; height: 2px; background: var(--primary); bottom: 0; left: 0; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: var(--light); text-decoration: none; transition: all 0.3s; opacity: 0.8; }
+        .footer-links a:hover { color: var(--primary); opacity: 1; padding-left: 5px; }
+        .contact-info { list-style: none; }
+        .contact-info li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; }
+        .contact-info i { color: var(--primary); margin-top: 3px; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.7; font-size: 0.9rem; }
+
+        @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: var(--secondary);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 30px;
-                transition: all 0.5s ease;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .page-hero {
-                padding: 150px 20px 80px;
-            }
-            
-            .page-hero h1 {
-                font-size: 2rem;
-            }
-            
-            .resource-tabs {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tab-btn {
-                width: 100%;
-                max-width: 300px;
-            }
+            .mobile-menu-btn { display: block; }
+            .nav-links { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); background: var(--secondary); flex-direction: column; align-items: center; justify-content: center; gap: 30px; transition: all 0.5s ease; }
+            .nav-links.active { left: 0; }
+            .page-hero { padding: 150px 20px 80px; }
+            .page-hero h1 { font-size: 2rem; }
+            .resource-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+
     <header id="header">
         <div class="container">
             <nav>
-                <div class="logo">
-                    <i class="fas fa-brain"></i>
-                    <span>MindWell</span>
-                </div>
+                <div class="logo"><i class="fas fa-brain"></i><span>MindWell</span></div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
@@ -627,227 +212,310 @@
                     <li><a href="news.html">Blog & News</a></li>
                     <li><a href="donate.html" class="donate-btn">Donate</a></li>
                 </ul>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
             </nav>
         </div>
     </header>
-    
+
     <section class="page-hero">
         <h1>Mental Health Resources</h1>
         <div class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span>/</span>
-            <a href="resources.html">Resources</a>
+            <a href="index.html">Home</a><span>/</span><a href="resources.html">Resources</a>
         </div>
     </section>
-    
+
     <section class="section">
         <div class="container">
             <h2 class="section-title">Explore Our Resources</h2>
             <div class="resources-intro">
-                <p>Access our carefully curated collection of mental health resources including articles, guides, toolkits, and recommended reading. Whether you're looking for self-help tools, educational materials, or support for loved ones, we've gathered the best resources to support your mental health journey.</p>
+                <p>Carefully curated mental health resources — real PDFs you can download, expert YouTube videos, trusted apps, and recommended books. All links go directly to the original source.</p>
             </div>
-            
+
             <div class="resource-tabs">
                 <button class="tab-btn active" data-category="all">All Resources</button>
-                <button class="tab-btn" data-category="articles">Articles</button>
-                <button class="tab-btn" data-category="guides">Guides & Toolkits</button>
-                <button class="tab-btn" data-category="books">Recommended Books</button>
-                <button class="tab-btn" data-category="apps">Apps & Tools</button>
-                <button class="tab-btn" data-category="videos">Videos & Podcasts</button>
+                <button class="tab-btn" data-category="guides">📄 PDF Guides</button>
+                <button class="tab-btn" data-category="videos">🎥 Videos</button>
+                <button class="tab-btn" data-category="apps">📱 Apps</button>
+                <button class="tab-btn" data-category="books">📚 Books</button>
+                <button class="tab-btn" data-category="podcasts">🎙️ Podcasts</button>
             </div>
-            
+
             <div class="resource-grid">
-                <!-- Article Resource -->
-                <div class="resource-card" data-category="articles">
-                    <div class="resource-image">
-                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Understanding Anxiety">
-                    </div>
-                    <div class="resource-content">
-                        <span class="resource-type">Article</span>
-                        <h3 class="resource-title">Understanding Anxiety Disorders</h3>
-                        <p class="resource-desc">A comprehensive guide to recognizing symptoms, understanding causes, and evidence-based strategies for managing anxiety in daily life.</p>
-                        <a href="#" class="resource-link">Read Article</a>
-                        <div class="resource-meta">
-                            <span><i class="far fa-clock"></i> 15 min read</span>
-                            <span><i class="far fa-calendar-alt"></i> May 2023</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Guide Resource -->
+
+                <!-- ───── PDF GUIDES ───── -->
                 <div class="resource-card" data-category="guides">
                     <div class="resource-image">
-                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Mindfulness Toolkit">
+                        <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=800&q=80" alt="Anxiety Workbook">
+                        <span class="pdf-corner"><i class="fas fa-file-pdf"></i> FREE PDF</span>
                     </div>
                     <div class="resource-content">
-                        <span class="resource-type">Guide</span>
-                        <h3 class="resource-title">Mindfulness Starter Toolkit</h3>
-                        <p class="resource-desc">A practical 30-day guide with exercises, worksheets, and audio tracks to help you develop a mindfulness practice.</p>
-                        <a href="#" class="resource-link download-btn">Download PDF</a>
-                        <div class="resource-meta">
-                            <span><i class="fas fa-file-pdf"></i> 2.4 MB</span>
-                            <span><i class="far fa-calendar-alt"></i> Updated Apr 2023</span>
-                        </div>
+                        <span class="resource-type type-pdf">PDF Workbook</span>
+                        <h3 class="resource-title">Anxiety & Depression Reduction Workbook</h3>
+                        <p class="resource-desc">A 5-session CBT-based workbook covering breathing techniques, muscle relaxation, thought challenging, and stress management. Developed by the University of Arkansas Health Services.</p>
+                        <p class="resource-source"><i class="fas fa-university"></i> University of Arkansas</p>
+                        <a href="https://health.uark.edu/mental-health/resources/caps-resources-anxiety-depression-reduction-workbook.pdf" target="_blank" rel="noopener" class="resource-link btn-pdf"><i class="fas fa-download"></i> Download PDF</a>
+                        <div class="resource-meta"><span><i class="fas fa-file-pdf"></i> Free · No signup</span><span><i class="far fa-clock"></i> 5 sessions</span></div>
                     </div>
                 </div>
-                
-                <!-- Book Resource -->
-                <div class="resource-card" data-category="books">
+
+                <div class="resource-card" data-category="guides">
                     <div class="resource-image">
-                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Book Recommendation">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="CBT Workbook">
+                        <span class="pdf-corner"><i class="fas fa-file-pdf"></i> FREE PDF</span>
                     </div>
                     <div class="resource-content">
-                        <span class="resource-type">Book</span>
-                        <h3 class="resource-title">The Body Keeps the Score</h3>
-                        <p class="resource-desc">Bessel van der Kolk's groundbreaking work on trauma and recovery, with insights into healing mind and body.</p>
-                        <a href="#" class="resource-link">View Details</a>
-                        <div class="resource-meta">
-                            <span><i class="fas fa-star"></i> 4.8/5</span>
-                            <span><i class="fas fa-book"></i> 464 pages</span>
-                        </div>
+                        <span class="resource-type type-pdf">CBT Workbook</span>
+                        <h3 class="resource-title">Cognitive Behavioural Therapy Skills</h3>
+                        <p class="resource-desc">A 69-page CBT skills workbook with exercises on challenging negative thoughts, behavioural activation, and building coping strategies. NHS-approved resource.</p>
+                        <p class="resource-source"><i class="fas fa-hospital"></i> NHS Foundation Trust</p>
+                        <a href="https://www.ntw.nhs.uk/content/uploads/2016/04/Coping-with-Stress-and-Anxiety.pdf" target="_blank" rel="noopener" class="resource-link btn-pdf"><i class="fas fa-download"></i> Download PDF</a>
+                        <div class="resource-meta"><span><i class="fas fa-file-pdf"></i> Free · NHS</span><span><i class="fas fa-pencil-alt"></i> 69 pages</span></div>
                     </div>
                 </div>
-                
-                <!-- App Resource -->
+
+                <div class="resource-card" data-category="guides">
+                    <div class="resource-image">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=800&q=80" alt="Depression Workbook">
+                        <span class="pdf-corner"><i class="fas fa-file-pdf"></i> FREE PDF</span>
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-type type-pdf">PDF Guide</span>
+                        <h3 class="resource-title">Behavioural Activation for Depression</h3>
+                        <p class="resource-desc">Evidence-based workbook from the University of Michigan that uses behavioural activation — one of the most effective non-medication treatments for depression — with structured exercises.</p>
+                        <p class="resource-source"><i class="fas fa-university"></i> University of Michigan</p>
+                        <a href="https://medicine.umich.edu/sites/default/files/content/downloads/Behavioral-Activation-for-Depression.pdf" target="_blank" rel="noopener" class="resource-link btn-pdf"><i class="fas fa-download"></i> Download PDF</a>
+                        <div class="resource-meta"><span><i class="fas fa-file-pdf"></i> Free · UMich</span><span><i class="fas fa-brain"></i> Evidence-based</span></div>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-category="guides">
+                    <div class="resource-image">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80" alt="Mindfulness Guide">
+                        <span class="pdf-corner"><i class="fas fa-file-pdf"></i> FREE PDF</span>
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-type type-pdf">PDF Toolkit</span>
+                        <h3 class="resource-title">PTSD & Anxiety: NHS Self-Help Guide</h3>
+                        <p class="resource-desc">A 36-page self-help booklet covering how anxiety and trauma affect the body and mind, with practical coping strategies based on trauma-focused CBT.</p>
+                        <p class="resource-source"><i class="fas fa-hospital"></i> NHS UK (2020)</p>
+                        <a href="https://www.nhsinform.scot/illnesses-and-conditions/mental-health/mental-health-self-help-guides/post-traumatic-stress-disorder-ptsd-self-help-guide" target="_blank" rel="noopener" class="resource-link btn-pdf"><i class="fas fa-external-link-alt"></i> Open Guide</a>
+                        <div class="resource-meta"><span><i class="fas fa-file-pdf"></i> Free · NHS Inform</span><span><i class="far fa-clock"></i> 36 pages</span></div>
+                    </div>
+                </div>
+
+                <!-- ───── VIDEOS ───── -->
+                <div class="resource-card" data-category="videos">
+                    <div class="resource-image">
+                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=800&q=80" alt="Therapy in a Nutshell">
+                        <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-type type-video">YouTube Channel</span>
+                        <h3 class="resource-title">Therapy in a Nutshell — Emma McAdam</h3>
+                        <p class="resource-desc">Licensed therapist Emma McAdam (2.4M subscribers) breaks down CBT, anxiety, depression, and emotional regulation into short, science-backed videos you can actually use.</p>
+                        <p class="resource-source"><i class="fab fa-youtube"></i> youtube.com/@TherapyinaNutshell</p>
+                        <a href="https://www.youtube.com/@TherapyinaNutshell" target="_blank" rel="noopener" class="resource-link btn-video"><i class="fab fa-youtube"></i> Watch Channel</a>
+                        <div class="resource-meta"><span><i class="fas fa-users"></i> 2.4M subscribers</span><span><i class="fas fa-check-circle"></i> LMFT verified</span></div>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-category="videos">
+                    <div class="resource-image">
+                        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=800&q=80" alt="Dr Tracey Marks">
+                        <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-type type-video">YouTube Channel</span>
+                        <h3 class="resource-title">Dr. Tracey Marks — Psychiatrist</h3>
+                        <p class="resource-desc">Atlanta-based psychiatrist with 20+ years experience explaining depression, anxiety, bipolar disorder, ADHD, and more. Playlists for each condition make it easy to find what you need.</p>
+                        <p class="resource-source"><i class="fab fa-youtube"></i> youtube.com/@DrTraceyMarks</p>
+                        <a href="https://www.youtube.com/@DrTraceyMarks" target="_blank" rel="noopener" class="resource-link btn-video"><i class="fab fa-youtube"></i> Watch Channel</a>
+                        <div class="resource-meta"><span><i class="fas fa-users"></i> 2.3M subscribers</span><span><i class="fas fa-user-md"></i> Psychiatrist</span></div>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-category="videos">
+                    <div class="resource-image">
+                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80" alt="Guided Meditation">
+                        <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-type type-video">Guided Meditation</span>
+                        <h3 class="resource-title">10-Min Meditation for Anxiety — Goodful</h3>
+                        <p class="resource-desc">A highly-rated 10-minute guided mindfulness meditation specifically for anxiety relief, with calming background music. Great for beginners and daily use.</p>
+                        <p class="resource-source"><i class="fab fa-youtube"></i> youtube.com — Goodful</p>
+                        <a href="https://www.youtube.com/watch?v=O-6f5wQXSu8" target="_blank" rel="noopener" class="resource-link btn-video"><i class="fas fa-play"></i> Watch Now</a>
+                        <div class="resource-meta"><span><i class="far fa-clock"></i> 10 minutes</span><span><i class="fas fa-star"></i> Highly rated</span></div>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-category="videos">
+                    <div class="resource-image">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80" alt="Yoga for anxiety">
+                        <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-type type-video">Yoga / Movement</span>
+                        <h3 class="resource-title">Yoga for Anxiety & Stress — Adriene</h3>
+                        <p class="resource-desc">Adriene Mishler's (20M+ subscribers) calming yoga routine for anxiety and stress relief. No experience needed — just 30 minutes to reset your nervous system.</p>
+                        <p class="resource-source"><i class="fab fa-youtube"></i> Yoga With Adriene</p>
+                        <a href="https://www.youtube.com/watch?v=hJbRpHZr_d0" target="_blank" rel="noopener" class="resource-link btn-video"><i class="fas fa-play"></i> Watch Now</a>
+                        <div class="resource-meta"><span><i class="far fa-clock"></i> 30 minutes</span><span><i class="fas fa-users"></i> 20M+ subscribers</span></div>
+                    </div>
+                </div>
+
+                <!-- ───── APPS ───── -->
                 <div class="resource-card" data-category="apps">
                     <div class="resource-image">
-                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Mental Health App">
+                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80" alt="Headspace App">
                     </div>
                     <div class="resource-content">
-                        <span class="resource-type">App</span>
+                        <span class="resource-type type-app">App</span>
                         <h3 class="resource-title">Headspace: Meditation & Sleep</h3>
-                        <p class="resource-desc">A science-backed app for meditation, sleep, and mindfulness, with guided sessions for all experience levels.</p>
-                        <a href="#" class="resource-link">Get the App</a>
-                        <div class="resource-meta">
-                            <span><i class="fas fa-mobile-alt"></i> iOS & Android</span>
-                            <span><i class="fas fa-dollar-sign"></i> Free + Premium</span>
-                        </div>
+                        <p class="resource-desc">Science-backed meditation, sleep, and mindfulness app. Clinically tested in studies published in peer-reviewed journals. Free basic plan available, with guided sessions for stress, focus, and sleep.</p>
+                        <p class="resource-source"><i class="fas fa-globe"></i> headspace.com</p>
+                        <a href="https://www.headspace.com/" target="_blank" rel="noopener" class="resource-link"><i class="fas fa-external-link-alt"></i> Get Headspace</a>
+                        <div class="resource-meta"><span><i class="fas fa-mobile-alt"></i> iOS & Android</span><span><i class="fas fa-tag"></i> Free + Premium</span></div>
                     </div>
                 </div>
-                
-                <!-- Video Resource -->
-                <div class="resource-card" data-category="videos">
+
+                <div class="resource-card" data-category="apps">
                     <div class="resource-image">
-                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Video Series">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80" alt="Woebot">
                     </div>
                     <div class="resource-content">
-                        <span class="resource-type">Video Series</span>
-                        <h3 class="resource-title">Cognitive Behavioral Therapy Basics</h3>
-                        <p class="resource-desc">A 10-part video series explaining CBT techniques you can use to challenge negative thought patterns.</p>
-                        <a href="#" class="resource-link">Watch Now</a>
-                        <div class="resource-meta">
-                            <span><i class="fas fa-play-circle"></i> 10 episodes</span>
-                            <span><i class="far fa-clock"></i> 3-8 min each</span>
-                        </div>
+                        <span class="resource-type type-app">App</span>
+                        <h3 class="resource-title">Woebot — CBT Chatbot</h3>
+                        <p class="resource-desc">Stanford-developed AI chatbot that teaches CBT and DBT techniques through conversation. Clinically studied for depression and anxiety. Available free via the web or app.</p>
+                        <p class="resource-source"><i class="fas fa-university"></i> Stanford-developed · woebot.io</p>
+                        <a href="https://woebothealth.com/" target="_blank" rel="noopener" class="resource-link"><i class="fas fa-external-link-alt"></i> Try Woebot</a>
+                        <div class="resource-meta"><span><i class="fas fa-mobile-alt"></i> iOS & Android</span><span><i class="fas fa-brain"></i> CBT-based</span></div>
                     </div>
                 </div>
-                
-                <!-- Article Resource -->
-                <div class="resource-card" data-category="articles">
+
+                <div class="resource-card" data-category="apps">
                     <div class="resource-image">
-                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Sleep Hygiene">
+                        <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&w=800&q=80" alt="Calm app">
                     </div>
                     <div class="resource-content">
-                        <span class="resource-type">Article</span>
-                        <h3 class="resource-title">The Science of Sleep Hygiene</h3>
-                        <p class="resource-desc">How improving your sleep habits can significantly impact mental health, with practical tips for better rest.</p>
-                        <a href="#" class="resource-link">Read Article</a>
-                        <div class="resource-meta">
-                            <span><i class="far fa-clock"></i> 12 min read</span>
-                            <span><i class="far fa-calendar-alt"></i> Mar 2023</span>
-                        </div>
+                        <span class="resource-type type-app">App</span>
+                        <h3 class="resource-title">Calm — Sleep & Meditation</h3>
+                        <p class="resource-desc">One of the world's most downloaded wellness apps. Features sleep stories, breathing exercises, guided meditations, and daily mindfulness programmes. Extensive free tier available.</p>
+                        <p class="resource-source"><i class="fas fa-globe"></i> calm.com</p>
+                        <a href="https://www.calm.com/" target="_blank" rel="noopener" class="resource-link"><i class="fas fa-external-link-alt"></i> Try Calm</a>
+                        <div class="resource-meta"><span><i class="fas fa-mobile-alt"></i> iOS & Android</span><span><i class="fas fa-tag"></i> Free + Premium</span></div>
                     </div>
                 </div>
-                
-                <!-- Guide Resource -->
-                <div class="resource-card" data-category="guides">
+
+                <!-- ───── BOOKS ───── -->
+                <div class="resource-card" data-category="books">
                     <div class="resource-image">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Workbook">
+                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=800&q=80" alt="The Body Keeps the Score">
                     </div>
                     <div class="resource-content">
-                        <span class="resource-type">Workbook</span>
-                        <h3 class="resource-title">Managing Depression: A Self-Help Workbook</h3>
-                        <p class="resource-desc">Interactive exercises and cognitive techniques to help manage depressive symptoms and build resilience.</p>
-                        <a href="#" class="resource-link download-btn">Download Workbook</a>
-                        <div class="resource-meta">
-                            <span><i class="fas fa-file-pdf"></i> 5.1 MB</span>
-                            <span><i class="fas fa-pencil-alt"></i> 42 pages</span>
-                        </div>
+                        <span class="resource-type type-book">Book</span>
+                        <h3 class="resource-title">The Body Keeps the Score</h3>
+                        <p class="resource-desc">Bessel van der Kolk's landmark work on how trauma reshapes the body and brain — and the path to recovery through movement, yoga, neuroscience, and therapy.</p>
+                        <p class="resource-source"><i class="fas fa-book"></i> Bessel van der Kolk, M.D.</p>
+                        <a href="https://www.goodreads.com/book/show/18693771-the-body-keeps-the-score" target="_blank" rel="noopener" class="resource-link"><i class="fas fa-external-link-alt"></i> View on Goodreads</a>
+                        <div class="resource-meta"><span><i class="fas fa-star"></i> 4.8 / 5</span><span><i class="fas fa-book"></i> 464 pages</span></div>
                     </div>
                 </div>
-                
-                <!-- Podcast Resource -->
-                <div class="resource-card" data-category="videos">
+
+                <div class="resource-card" data-category="books">
                     <div class="resource-image">
-                        <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Podcast">
+                        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80" alt="Feeling Good">
                     </div>
                     <div class="resource-content">
-                        <span class="resource-type">Podcast</span>
-                        <h3 class="resource-title">The Happiness Lab</h3>
-                        <p class="resource-desc">Yale professor Dr. Laurie Santos examines the psychology behind happiness and mental well-being.</p>
-                        <a href="#" class="resource-link">Listen Now</a>
-                        <div class="resource-meta">
-                            <span><i class="fas fa-headphones"></i> 50+ episodes</span>
-                            <span><i class="far fa-clock"></i> 30-60 min</span>
-                        </div>
+                        <span class="resource-type type-book">Book</span>
+                        <h3 class="resource-title">Feeling Good: The New Mood Therapy</h3>
+                        <p class="resource-desc">Dr. David Burns' classic CBT self-help book for depression. Clinically studied — in one trial, patients showed improvement equal to antidepressant medication. Often recommended by therapists.</p>
+                        <p class="resource-source"><i class="fas fa-book"></i> Dr. David D. Burns, M.D.</p>
+                        <a href="https://www.goodreads.com/book/show/22392.Feeling_Good" target="_blank" rel="noopener" class="resource-link"><i class="fas fa-external-link-alt"></i> View on Goodreads</a>
+                        <div class="resource-meta"><span><i class="fas fa-star"></i> 4.6 / 5</span><span><i class="fas fa-brain"></i> CBT-based</span></div>
                     </div>
                 </div>
-            </div>
+
+                <!-- ───── PODCASTS ───── -->
+                <div class="resource-card" data-category="podcasts">
+                    <div class="resource-image">
+                        <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=800&q=80" alt="The Happiness Lab">
+                        <div class="play-overlay"><i class="fas fa-headphones"></i></div>
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-type type-podcast">Podcast</span>
+                        <h3 class="resource-title">The Happiness Lab — Dr. Laurie Santos</h3>
+                        <p class="resource-desc">Yale psychology professor Dr. Laurie Santos examines the science of happiness, what our brains get wrong about it, and evidence-based ways to feel better. One of the top mental wellness podcasts globally.</p>
+                        <p class="resource-source"><i class="fas fa-podcast"></i> Pushkin Industries · Free</p>
+                        <a href="https://www.happinesslab.fm/" target="_blank" rel="noopener" class="resource-link"><i class="fas fa-headphones"></i> Listen Now</a>
+                        <div class="resource-meta"><span><i class="fas fa-headphones"></i> 80+ episodes</span><span><i class="far fa-clock"></i> 30–50 min</span></div>
+                    </div>
+                </div>
+
+                <div class="resource-card" data-category="podcasts">
+                    <div class="resource-image">
+                        <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=800&q=80" alt="Feel Better Podcast">
+                        <div class="play-overlay"><i class="fas fa-headphones"></i></div>
+                    </div>
+                    <div class="resource-content">
+                        <span class="resource-type type-podcast">Podcast</span>
+                        <h3 class="resource-title">Huberman Lab — Mental Health Episodes</h3>
+                        <p class="resource-desc">Stanford neuroscientist Dr. Andrew Huberman dives deep into the science of stress, sleep, anxiety, and dopamine. Dense with practical, research-backed tools you can use immediately.</p>
+                        <p class="resource-source"><i class="fas fa-podcast"></i> hubermanlab.com · Free</p>
+                        <a href="https://www.hubermanlab.com/topics/mental-health" target="_blank" rel="noopener" class="resource-link"><i class="fas fa-headphones"></i> Listen Now</a>
+                        <div class="resource-meta"><span><i class="fas fa-headphones"></i> Spotify / Apple</span><span><i class="fas fa-university"></i> Stanford neuroscience</span></div>
+                    </div>
+                </div>
+
+            </div><!-- /resource-grid -->
         </div>
     </section>
-    
+
+    <!-- ── EMERGENCY ── -->
     <section class="section emergency-section">
         <div class="container">
             <h2 class="section-title">Emergency Resources</h2>
             <p>If you or someone you know is in crisis, please reach out to these services immediately.</p>
-            
             <div class="emergency-cards">
                 <div class="emergency-card">
                     <div class="emergency-icon"><i class="fas fa-phone-alt"></i></div>
-                    <h3 class="emergency-title">Crisis Helpline</h3>
-                    <div class="emergency-number">1-800-273-TALK (8255)</div>
-                    <p>24/7 free and confidential support</p>
+                    <h3 class="emergency-title">iCall (India)</h3>
+                    <div class="emergency-number">9152987821</div>
+                    <p>Mon–Sat, 8am–10pm · Free & confidential</p>
                 </div>
-                
                 <div class="emergency-card">
-                    <div class="emergency-icon"><i class="fas fa-sms"></i></div>
-                    <h3 class="emergency-title">Text Support</h3>
-                    <div class="emergency-number">Text HOME to 741741</div>
-                    <p>Connect with a crisis counselor via text</p>
+                    <div class="emergency-icon"><i class="fas fa-heart"></i></div>
+                    <h3 class="emergency-title">Vandrevala Foundation</h3>
+                    <div class="emergency-number">1860-2662-345</div>
+                    <p>24/7 · Free helpline across India</p>
                 </div>
-                
                 <div class="emergency-card">
                     <div class="emergency-icon"><i class="fas fa-globe-americas"></i></div>
                     <h3 class="emergency-title">International Help</h3>
-                    <div class="emergency-number">Find your local line</div>
+                    <div class="emergency-number">findahelpline.com</div>
                     <p>Worldwide directory of crisis centers</p>
                 </div>
             </div>
         </div>
     </section>
-    
+
+    <!-- ── NEWSLETTER ── -->
     <section class="section newsletter">
         <div class="container">
             <h2 class="section-title">Stay Updated</h2>
             <p>Subscribe to receive new resources, mental health tips, and updates straight to your inbox.</p>
-            <form class="newsletter-form">
+            <form class="newsletter-form" onsubmit="return false;">
                 <input type="email" class="newsletter-input" placeholder="Your email address" required>
                 <button type="submit" class="newsletter-btn">Subscribe</button>
             </form>
         </div>
     </section>
-    
+
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <div class="footer-logo">
-                        <i class="fas fa-brain"></i>
-                        <span>MindWell Foundation</span>
-                    </div>
+                    <div class="footer-logo"><i class="fas fa-brain"></i><span>MindWell Foundation</span></div>
                     <p class="footer-desc">Dedicated to improving mental health through support, education, and advocacy. Together, we can create a world where mental well-being is a priority for all.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
@@ -884,96 +552,43 @@
                 <div class="footer-column">
                     <h3 class="footer-title">Contact Us</h3>
                     <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Wellness Street, Mindville, MV 12345</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone-alt"></i>
-                            <span>1-800-MINDWELL (1-800-646-3935)</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>info@mindwell.org</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-clock"></i>
-                            <span>Monday - Friday: 9am - 7pm<br>Weekends: 10am - 4pm</span>
-                        </li>
+                        <li><i class="fas fa-map-marker-alt"></i><span>123 Wellness Street, Mindville, MV 12345</span></li>
+                        <li><i class="fas fa-phone-alt"></i><span>1-800-MINDWELL</span></li>
+                        <li><i class="fas fa-envelope"></i><span>info@mindwell.org</span></li>
+                        <li><i class="fas fa-clock"></i><span>Mon–Fri: 9am–7pm<br>Weekends: 10am–4pm</span></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 MindWell Foundation. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>&copy; 2025 MindWell Foundation. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a></p>
             </div>
         </div>
     </footer>
-    
+
     <script>
-        // Mobile menu toggle
+        // Mobile menu
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
-        
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ?
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-        
-        // Header scroll effect
-        const header = document.getElementById('header');
-        
+
+        // Scroll header
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
         });
-        
-        // Resource filtering
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const resourceCards = document.querySelectorAll('.resource-card');
-        
-        tabBtns.forEach(btn => {
+
+        // Tab filtering
+        document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                // Update active tab
-                tabBtns.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
-                // Filter resources
-                const category = btn.dataset.category;
-                resourceCards.forEach(card => {
-                    if (category === 'all' || card.dataset.category === category) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                const cat = btn.dataset.category;
+                document.querySelectorAll('.resource-card').forEach(card => {
+                    card.style.display = (cat === 'all' || card.dataset.category === cat) ? 'flex' : 'none';
                 });
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                }
             });
         });
     </script>

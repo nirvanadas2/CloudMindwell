@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate | MindWell Foundation</title>
+    <title>Donate - MindWell Foundation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
@@ -14,20 +14,17 @@
             --light: #FFFFFF;
             --accent: #FF6B6B;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--dark);
             color: var(--light);
             overflow-x: hidden;
         }
-        
+
+        /* ── Header ── */
         header {
             background: var(--secondary);
             padding: 15px 0;
@@ -35,27 +32,23 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
-        
         header.scrolled {
             padding: 10px 0;
-            background: rgba(37, 37, 37, 0.95);
+            background: rgba(37,37,37,0.95);
         }
-        
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
         .logo {
             font-size: 28px;
             font-weight: bold;
@@ -64,17 +57,12 @@
             align-items: center;
             gap: 10px;
         }
-        
-        .logo i {
-            font-size: 32px;
-        }
-        
+        .logo i { font-size: 32px; }
         .nav-links {
             display: flex;
             list-style: none;
             gap: 30px;
         }
-        
         .nav-links li a {
             text-decoration: none;
             color: var(--light);
@@ -82,7 +70,6 @@
             position: relative;
             transition: all 0.3s ease;
         }
-        
         .nav-links li a:after {
             content: '';
             position: absolute;
@@ -93,16 +80,9 @@
             left: 0;
             transition: width 0.3s ease;
         }
-        
-        .nav-links li a:hover:after {
-            width: 100%;
-        }
-        
-        .nav-links li a:hover {
-            color: var(--primary);
-        }
-        
-        .donate-btn {
+        .nav-links li a:hover:after { width: 100%; }
+        .nav-links li a:hover { color: var(--primary); }
+        .nav-donate-btn {
             background: var(--primary);
             padding: 10px 25px;
             border-radius: 30px;
@@ -111,14 +91,12 @@
             transition: all 0.3s ease;
             border: 2px solid var(--primary);
         }
-        
-        .donate-btn:hover {
+        .nav-donate-btn:hover {
             background: transparent;
             color: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(249, 237, 50, 0.2);
+            box-shadow: 0 10px 20px rgba(249,237,50,0.2);
         }
-        
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -127,452 +105,101 @@
             font-size: 24px;
             cursor: pointer;
         }
-        
-        .page-hero {
-            background: linear-gradient(135deg, rgba(249,237,50,0.8) 0%, rgba(255,242,37,0.8) 100%), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+
+        /* ── Donate page hero banner ── */
+        .donate-hero {
+            background: linear-gradient(135deg, #F9ED32 0%, #FFF225 100%);
             color: var(--secondary);
             text-align: center;
-            padding: 180px 20px 100px;
-            position: relative;
-            overflow: hidden;
+            padding: 160px 20px 60px;
         }
-        
-        .page-hero h1 {
-            font-size: 3.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
-        }
-        
-        .breadcrumb {
+        .donate-hero h1 { font-size: 3rem; font-weight: bold; margin-bottom: 12px; }
+        .donate-hero p  { font-size: 1.15rem; opacity: 0.8; }
+
+        /* ── Donate card section ── */
+        .donate-section {
+            padding: 60px 20px 80px;
             display: flex;
             justify-content: center;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease 0.2s forwards;
-            opacity: 0;
         }
-        
-        .breadcrumb a {
-            color: var(--secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .breadcrumb a:hover {
-            color: var(--accent);
-        }
-        
-        .breadcrumb span {
-            margin: 0 10px;
-        }
-        
-        .section {
-            padding: 80px 20px;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-            text-align: center;
-            width: 100%;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 3px;
-            background: var(--primary);
-            bottom: -10px;
-            left: 25%;
-        }
-        
-        .donation-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        
-        .donation-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        
-        .donation-card {
-            flex: 1;
-            min-width: 300px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .donation-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(249, 237, 50, 0.2);
-        }
-        
-        .donation-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .donation-title {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        .donation-desc {
-            margin-bottom: 25px;
-        }
-        
-        .donation-amounts {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        
-        .amount-btn {
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            color: var(--light);
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .amount-btn:hover {
-            background: rgba(249, 237, 50, 0.2);
-        }
-        
-        .amount-btn.selected {
-            background: var(--primary);
-            color: var(--secondary);
-            font-weight: bold;
-            border-color: var(--primary);
-        }
-        
-        .custom-amount {
-            display: flex;
-            margin-bottom: 25px;
-        }
-        
-        .custom-amount input {
-            flex: 1;
-            padding: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 5px 0 0 5px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--light);
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-        }
-        
-        .custom-amount input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
-        .currency {
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-left: none;
-            border-radius: 0 5px 5px 0;
-        }
-        
-        .donate-now-btn {
-            display: inline-block;
-            width: 100%;
-            padding: 15px;
-            background: var(--primary);
-            color: var(--secondary);
-            border: none;
-            border-radius: 5px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .donate-now-btn:hover {
-            background: var(--light);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(249, 237, 50, 0.3);
-        }
-        
-        .impact-section {
+        .donate-card {
             background: var(--secondary);
-            text-align: center;
-        }
-        
-        .impact-stats {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .impact-stat {
-            width: 200px;
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        .stat-label {
-            font-size: 1.1rem;
-        }
-        
-        .donation-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .form-control {
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 560px;
             width: 100%;
-            padding: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--light);
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
         }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
-        .form-row {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .form-row .form-group {
-            flex: 1;
-        }
-        
-        .payment-methods {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        
-        .payment-method {
-            flex: 1;
-            text-align: center;
-            padding: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .payment-method:hover {
-            border-color: var(--primary);
-        }
-        
-        .payment-method.selected {
-            border-color: var(--primary);
-            background: rgba(249, 237, 50, 0.1);
-        }
-        
-        .payment-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        
-        .recurring-options {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        
-        .recurring-option {
-            flex: 1;
-            text-align: center;
-            padding: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .recurring-option:hover {
-            border-color: var(--primary);
-        }
-        
-        .recurring-option.selected {
-            border-color: var(--primary);
-            background: rgba(249, 237, 50, 0.1);
-        }
-        
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .checkbox-group input {
-            margin-right: 10px;
-        }
-        
-        .testimonials {
-            background: linear-gradient(135deg, rgba(249,237,50,0.1) 0%, rgba(255,107,107,0.1) 100%);
-        }
-        
-        .testimonial-carousel {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        
-        .testimonial-slides {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        
-        .testimonial-card {
-            min-width: 100%;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        
-        .testimonial-content {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .testimonial-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
             margin-bottom: 30px;
-            font-style: italic;
-            position: relative;
         }
-        
-        .testimonial-text:before,
-        .testimonial-text:after {
-            content: '"';
-            font-size: 3rem;
+        .impact-card {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 18px 10px;
+            text-align: center;
+        }
+        .impact-card i {
+            font-size: 1.6rem;
             color: var(--primary);
-            opacity: 0.3;
-            position: absolute;
+            margin-bottom: 10px;
+            display: block;
         }
-        
-        .testimonial-text:before {
-            top: -20px;
-            left: -10px;
-        }
-        
-        .testimonial-text:after {
-            bottom: -40px;
-            right: -10px;
-        }
-        
-        .testimonial-author {
+        .impact-card p { font-size: 0.75rem; opacity: 0.8; line-height: 1.4; }
+
+        h2.card-title { font-size: 1.8rem; margin-bottom: 8px; }
+        .subtitle { opacity: 0.7; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.6; }
+
+        .donate-btn {
             display: flex;
-            flex-direction: column;
             align-items: center;
-        }
-        
-        .author-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 15px;
-            border: 3px solid var(--primary);
-        }
-        
-        .author-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .author-name {
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .author-role {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .carousel-nav {
-            display: flex;
             justify-content: center;
             gap: 10px;
-            margin-top: 30px;
-        }
-        
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .carousel-dot.active {
+            width: 100%;
+            padding: 18px;
             background: var(--primary);
-            transform: scale(1.2);
+            color: var(--secondary);
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 16px;
         }
-        
+        .donate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(249,237,50,0.3);
+        }
+        .secure-note {
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            margin-bottom: 20px;
+        }
+        .secure-note i { margin-right: 5px; }
+        .platform-note {
+            background: rgba(249,237,50,0.08);
+            border: 1px solid rgba(249,237,50,0.2);
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.75);
+        }
+        .platform-note i { color: var(--primary); margin-right: 6px; }
+
+        /* ── Footer ── */
         footer {
             background: var(--secondary);
             padding: 60px 0 20px;
             color: var(--light);
         }
-        
         .footer-content {
             display: flex;
             flex-wrap: wrap;
@@ -580,12 +207,7 @@
             gap: 40px;
             margin-bottom: 40px;
         }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-        }
-        
+        .footer-column { flex: 1; min-width: 250px; }
         .footer-logo {
             font-size: 24px;
             font-weight: bold;
@@ -595,39 +217,19 @@
             align-items: center;
             gap: 10px;
         }
-        
-        .footer-logo i {
-            font-size: 28px;
-        }
-        
-        .footer-desc {
-            margin-bottom: 20px;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
+        .footer-logo i { font-size: 28px; }
+        .footer-desc { margin-bottom: 20px; opacity: 0.8; line-height: 1.6; }
+        .social-links { display: flex; gap: 15px; }
         .social-link {
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: rgba(255,255,255,0.1);
+            display: flex; justify-content: center; align-items: center;
             transition: all 0.3s ease;
+            color: var(--light);
+            text-decoration: none;
         }
-        
-        .social-link:hover {
-            background: var(--primary);
-            color: var(--secondary);
-            transform: translateY(-3px);
-        }
-        
+        .social-link:hover { background: var(--primary); color: var(--secondary); transform: translateY(-3px); }
         .footer-title {
             font-size: 1.2rem;
             color: var(--primary);
@@ -635,138 +237,59 @@
             position: relative;
             padding-bottom: 10px;
         }
-        
         .footer-title:after {
             content: '';
             position: absolute;
-            width: 40px;
-            height: 2px;
+            width: 40px; height: 2px;
             background: var(--primary);
-            bottom: 0;
-            left: 0;
+            bottom: 0; left: 0;
         }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
         .footer-links a {
             color: var(--light);
             text-decoration: none;
             transition: all 0.3s ease;
             opacity: 0.8;
         }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-            opacity: 1;
-            padding-left: 5px;
-        }
-        
-        .contact-info {
-            list-style: none;
-        }
-        
-        .contact-info li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        
-        .contact-info i {
-            color: var(--primary);
-            margin-top: 3px;
-        }
-        
+        .footer-links a:hover { color: var(--primary); opacity: 1; padding-left: 5px; }
+        .contact-info { list-style: none; }
+        .contact-info li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; }
+        .contact-info i { color: var(--primary); margin-top: 3px; }
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
             opacity: 0.7;
             font-size: 0.9rem;
         }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .nav-links {
-                gap: 15px;
-            }
-            
-            .page-hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .donation-options {
-                flex-direction: column;
-            }
-            
-            .donation-card {
-                min-width: 100%;
-            }
-            
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
-        }
-        
+        .footer-bottom a { color: var(--light); }
+
+        /* ── Responsive ── */
+        @media (max-width: 992px) { .nav-links { gap: 15px; } }
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
+            .mobile-menu-btn { display: block; }
             .nav-links {
                 position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
+                top: 80px; left: -100%;
+                width: 100%; height: calc(100vh - 80px);
                 background: var(--secondary);
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
+                align-items: center; justify-content: center;
                 gap: 30px;
                 transition: all 0.5s ease;
             }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .page-hero {
-                padding: 150px 20px 80px;
-            }
-            
-            .page-hero h1 {
-                font-size: 2rem;
-            }
-            
-            .payment-methods {
-                flex-direction: column;
-            }
-            
-            .recurring-options {
-                flex-direction: column;
-            }
+            .nav-links.active { left: 0; }
+            .donate-hero h1 { font-size: 2rem; }
+            .donate-card { padding: 35px 24px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .footer-column { min-width: 100%; }
         }
     </style>
 </head>
 <body>
+
+    <!-- ── Header ── -->
     <header id="header">
         <div class="container">
             <nav>
@@ -780,8 +303,8 @@
                     <li><a href="services.html">Our Services</a></li>
                     <li><a href="resources.html">Resources</a></li>
                     <li><a href="getinvolved.html">Get Involved</a></li>
-                    <li><a href="news.html">Blog & News</a></li>
-                    <li><a href="donate.html" class="donate-btn">Donate</a></li>
+                    <li><a href="mental.html">Mental Health Screening</a></li>
+                    <li><a href="donate.html" class="nav-donate-btn">Donate</a></li>
                 </ul>
                 <button class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
@@ -789,277 +312,52 @@
             </nav>
         </div>
     </header>
-    
-    <section class="page-hero">
-        <h1>Support Mental Health</h1>
-        <div class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span>/</span>
-            <a href="donate.html">Donate</a>
+
+    <!-- ── Page Hero ── -->
+    <div class="donate-hero">
+        <h1>Make a Difference</h1>
+        <p>Every rupee brings someone closer to the help they need.</p>
+    </div>
+
+    <!-- ── Donate Card ── -->
+    <div class="donate-section">
+        <div class="donate-card">
+
+            <h2 class="card-title">Support MindWell Foundation</h2>
+            <p class="subtitle">Your donation helps us provide mental health support, counseling, and education to those who need it most.</p>
+
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <i class="fas fa-headset"></i>
+                    <p>Funds 24/7 crisis support calls</p>
+                </div>
+                <div class="impact-card">
+                    <i class="fas fa-users"></i>
+                    <p>Supports community group sessions</p>
+                </div>
+                <div class="impact-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <p>Sponsors mental health workshops</p>
+                </div>
+            </div>
+
+            <a href="https://milaap.org/fundraisers/support-mental-health-charity" target="_blank" class="donate-btn">
+                <i class="fas fa-heart"></i> Donate on Milaap
+            </a>
+
+            <p class="secure-note">
+                <i class="fas fa-lock"></i> Secured by Milaap · Trusted by 1Cr+ donors in India
+            </p>
+
+            <div class="platform-note">
+                <i class="fas fa-info-circle"></i>
+                You'll be taken to our Milaap campaign page where you can donate via <strong>UPI, net banking, credit/debit card,</strong> or <strong>wallet</strong> — no account needed.
+            </div>
+
         </div>
-    </section>
-    
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Make a Difference Today</h2>
-            <div class="donation-intro">
-                <p>Your generous donation helps us provide critical mental health services to those in need. Every contribution, no matter the size, helps create a world where mental well-being is accessible to all. Choose how you'd like to support our mission below.</p>
-            </div>
-            
-            <div class="donation-options">
-                <div class="donation-card">
-                    <div class="donation-icon"><i class="fas fa-hand-holding-heart"></i></div>
-                    <h3 class="donation-title">One-Time Gift</h3>
-                    <p class="donation-desc">Make a single donation to support our immediate programs and services.</p>
-                    
-                    <div class="donation-amounts">
-                        <button class="amount-btn">$25</button>
-                        <button class="amount-btn">$50</button>
-                        <button class="amount-btn selected">$100</button>
-                        <button class="amount-btn">$250</button>
-                        <button class="amount-btn">$500</button>
-                    </div>
-                    
-                    <div class="custom-amount">
-                        <input type="number" placeholder="Other amount">
-                        <div class="currency">USD</div>
-                    </div>
-                    
-                    <button class="donate-now-btn">Donate Now</button>
-                </div>
-                
-                <div class="donation-card">
-                    <div class="donation-icon"><i class="fas fa-calendar-check"></i></div>
-                    <h3 class="donation-title">Monthly Support</h3>
-                    <p class="donation-desc">Become a sustaining member with automatic monthly donations for ongoing impact.</p>
-                    
-                    <div class="donation-amounts">
-                        <button class="amount-btn">$10</button>
-                        <button class="amount-btn selected">$25</button>
-                        <button class="amount-btn">$50</button>
-                        <button class="amount-btn">$100</button>
-                        <button class="amount-btn">$250</button>
-                    </div>
-                    
-                    <div class="custom-amount">
-                        <input type="number" placeholder="Other amount">
-                        <div class="currency">USD</div>
-                    </div>
-                    
-                    <button class="donate-now-btn">Start Monthly Giving</button>
-                </div>
-                
-                <div class="donation-card">
-                    <div class="donation-icon"><i class="fas fa-gift"></i></div>
-                    <h3 class="donation-title">Tribute Gift</h3>
-                    <p class="donation-desc">Honor a loved one while supporting mental health awareness and services.</p>
-                    
-                    <div class="donation-amounts">
-                        <button class="amount-btn">$50</button>
-                        <button class="amount-btn selected">$100</button>
-                        <button class="amount-btn">$250</button>
-                        <button class="amount-btn">$500</button>
-                        <button class="amount-btn">$1,000</button>
-                    </div>
-                    
-                    <div class="custom-amount">
-                        <input type="number" placeholder="Other amount">
-                        <div class="currency">USD</div>
-                    </div>
-                    
-                    <button class="donate-now-btn">Give in Honor</button>
-                </div>
-            </div>
-            
-            <div class="donation-form">
-                <h3 style="text-align: center; color: var(--primary); margin-bottom: 30px;">Donation Information</h3>
-                
-                <div class="form-group">
-                    <label for="amount">Donation Amount</label>
-                    <input type="text" id="amount" class="form-control" value="$100.00" readonly>
-                </div>
-                
-                <div class="form-group">
-                    <label>Payment Method</label>
-                    <div class="payment-methods">
-                        <div class="payment-method selected">
-                            <div class="payment-icon"><i class="fab fa-cc-visa"></i></div>
-                            <div>Credit Card</div>
-                        </div>
-                        <div class="payment-method">
-                            <div class="payment-icon"><i class="fab fa-paypal"></i></div>
-                            <div>PayPal</div>
-                        </div>
-                        <div class="payment-method">
-                            <div class="payment-icon"><i class="fas fa-university"></i></div>
-                            <div>Bank Transfer</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Donation Type</label>
-                    <div class="recurring-options">
-                        <div class="recurring-option selected">
-                            One-Time Gift
-                        </div>
-                        <div class="recurring-option">
-                            Monthly Donation
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" class="form-control" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" class="form-control">
-                </div>
-                
-                <div class="form-group">
-                    <label for="address">Street Address</label>
-                    <input type="text" id="address" class="form-control">
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="city">City</label>
-                        <input type="text" id="city" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="state">State/Province</label>
-                        <input type="text" id="state" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="zip">ZIP/Postal Code</label>
-                        <input type="text" id="zip" class="form-control">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="country">Country</label>
-                    <select id="country" class="form-control">
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>United Kingdom</option>
-                        <option>Australia</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="anonymous" name="anonymous">
-                        <label for="anonymous">Make this donation anonymously</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="receipt" name="receipt" checked>
-                        <label for="receipt">Email me a receipt</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="updates" name="updates" checked>
-                        <label for="updates">Send me occasional updates about my impact</label>
-                    </div>
-                </div>
-                
-                <button class="donate-now-btn" style="margin-top: 20px;">Complete Donation</button>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section impact-section">
-        <div class="container">
-            <h2 class="section-title">Your Impact</h2>
-            <p>See how your generous donations make a difference in people's lives every day.</p>
-            
-            <div class="impact-stats">
-                <div class="impact-stat">
-                    <div class="stat-number">1,200+</div>
-                    <div class="stat-label">Crisis calls answered monthly</div>
-                </div>
-                <div class="impact-stat">
-                    <div class="stat-number">85%</div>
-                    <div class="stat-label">Of clients show improvement</div>
-                </div>
-                <div class="impact-stat">
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">Free therapy sessions provided</div>
-                </div>
-                <div class="impact-stat">
-                    <div class="stat-number">10K</div>
-                    <div class="stat-label">People educated annually</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section testimonials">
-        <div class="container">
-            <h2 class="section-title">Why People Give</h2>
-            <div class="testimonial-carousel">
-                <div class="testimonial-slides">
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p class="testimonial-text">I donate to MindWell because I know firsthand how mental health struggles can affect a family. Their programs helped my daughter when she needed it most, and I want others to have the same opportunity for help.</p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">
-                                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Robert T.">
-                                </div>
-                                <div class="author-name">Robert T.</div>
-                                <div class="author-role">Monthly Donor</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p class="testimonial-text">As a business owner, I appreciate how MindWell supports workplace mental health. Their training programs have made our company culture healthier and more productive. Giving back is an easy decision.</p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">
-                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Lisa M.">
-                                </div>
-                                <div class="author-name">Lisa M.</div>
-                                <div class="author-role">Corporate Sponsor</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p class="testimonial-text">After losing my brother to suicide, I needed to channel my grief into something positive. Supporting MindWell's prevention programs helps me honor his memory while potentially saving other families from similar pain.</p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">
-                                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="David K.">
-                                </div>
-                                <div class="author-name">David K.</div>
-                                <div class="author-role">Memorial Donor</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-nav">
-                    <div class="carousel-dot active"></div>
-                    <div class="carousel-dot"></div>
-                    <div class="carousel-dot"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
+    </div>
+
+    <!-- ── Footer ── -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1085,7 +383,7 @@
                         <li><a href="services.html">Our Services</a></li>
                         <li><a href="resources.html">Resources</a></li>
                         <li><a href="getinvolved.html">Get Involved</a></li>
-                        <li><a href="news.html">Blog & News</a></li>
+                        <li><a href="mental.html">Mental Health Screening</a></li>
                         <li><a href="donate.html">Donate</a></li>
                     </ul>
                 </div>
@@ -1104,148 +402,37 @@
                 <div class="footer-column">
                     <h3 class="footer-title">Contact Us</h3>
                     <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Wellness Street, Mindville, MV 12345</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone-alt"></i>
-                            <span>1-800-MINDWELL (1-800-646-3935)</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>info@mindwell.org</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-clock"></i>
-                            <span>Monday - Friday: 9am - 7pm<br>Weekends: 10am - 4pm</span>
-                        </li>
+                        <li><i class="fas fa-map-marker-alt"></i><span>123 Wellness Street, Mindville, MV 12345</span></li>
+                        <li><i class="fas fa-phone-alt"></i><span>1-800-MINDWELL (1-800-646-3935)</span></li>
+                        <li><i class="fas fa-envelope"></i><span>info@mindwell.org</span></li>
+                        <li><i class="fas fa-clock"></i><span>Monday - Friday: 9am - 7pm<br>Weekends: 10am - 4pm</span></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 MindWell Foundation. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>&copy; 2025 MindWell Foundation. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="privacy.html">Terms of Service</a></p>
             </div>
         </div>
     </footer>
-    
+
     <script>
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
-        
+
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
         });
-        
+
         // Header scroll effect
         const header = document.getElementById('header');
-        
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // Donation amount selection
-        const amountBtns = document.querySelectorAll('.amount-btn');
-        
-        amountBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove selected class from all buttons in this card
-                btn.parentNode.querySelectorAll('.amount-btn').forEach(b => {
-                    b.classList.remove('selected');
-                });
-                
-                // Add selected class to clicked button
-                btn.classList.add('selected');
-                
-                // Update donation amount in form
-                const amount = btn.textContent;
-                document.getElementById('amount').value = amount;
-            });
-        });
-        
-        // Payment method selection
-        const paymentMethods = document.querySelectorAll('.payment-method');
-        
-        paymentMethods.forEach(method => {
-            method.addEventListener('click', () => {
-                paymentMethods.forEach(m => m.classList.remove('selected'));
-                method.classList.add('selected');
-            });
-        });
-        
-        // Recurring option selection
-        const recurringOptions = document.querySelectorAll('.recurring-option');
-        
-        recurringOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                recurringOptions.forEach(o => o.classList.remove('selected'));
-                option.classList.add('selected');
-            });
-        });
-        
-        // Testimonial carousel
-        const testimonialCarousel = document.querySelector('.testimonial-carousel');
-        const testimonialSlides = document.querySelector('.testimonial-slides');
-        const testimonialCards = document.querySelectorAll('.testimonial-card');
-        const dots = document.querySelectorAll('.carousel-dot');
-        
-        let currentIndex = 0;
-        const cardWidth = testimonialCards[0].clientWidth;
-        const totalCards = testimonialCards.length;
-        
-        function updateTestimonialCarousel() {
-            testimonialSlides.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-        
-        // Dot navigation
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentIndex = index;
-                updateTestimonialCarousel();
-            });
-        });
-        
-        // Auto-rotate carousel
-        setInterval(() => {
-            currentIndex = (currentIndex < totalCards - 1) ? currentIndex + 1 : 0;
-            updateTestimonialCarousel();
-        }, 5000);
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                }
-            });
+            header.classList.toggle('scrolled', window.scrollY > 50);
         });
     </script>
+
 </body>
 </html>

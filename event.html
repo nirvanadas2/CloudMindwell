@@ -14,20 +14,17 @@
             --light: #FFFFFF;
             --accent: #FF6B6B;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--dark);
             color: var(--light);
             overflow-x: hidden;
         }
-        
+
+        /* ── Header ── */
         header {
             background: var(--secondary);
             padding: 15px 0;
@@ -35,1078 +32,384 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
-        
-        header.scrolled {
-            padding: 10px 0;
-            background: rgba(37, 37, 37, 0.95);
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo i {
-            font-size: 32px;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
+        header.scrolled { padding: 10px 0; background: rgba(37,37,37,0.95); }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 28px; font-weight: bold; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+        .logo i { font-size: 32px; }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
         .nav-links li a {
-            text-decoration: none;
-            color: var(--light);
-            font-weight: 500;
-            position: relative;
-            transition: all 0.3s ease;
+            text-decoration: none; color: var(--light); font-weight: 500;
+            position: relative; transition: all 0.3s ease;
         }
-        
         .nav-links li a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            bottom: -5px;
-            left: 0;
-            transition: width 0.3s ease;
+            content: ''; position: absolute; width: 0; height: 2px;
+            background: var(--primary); bottom: -5px; left: 0; transition: width 0.3s ease;
         }
-        
-        .nav-links li a:hover:after {
-            width: 100%;
-        }
-        
-        .nav-links li a:hover {
-            color: var(--primary);
-        }
-        
+        .nav-links li a:hover:after { width: 100%; }
+        .nav-links li a:hover { color: var(--primary); }
         .donate-btn {
-            background: var(--primary);
-            padding: 10px 25px;
-            border-radius: 30px;
-            color: var(--secondary);
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary);
+            background: var(--primary); padding: 10px 25px; border-radius: 30px;
+            color: var(--secondary); font-weight: bold; transition: all 0.3s ease; border: 2px solid var(--primary);
         }
-        
         .donate-btn:hover {
-            background: transparent;
-            color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(249, 237, 50, 0.2);
+            background: transparent; color: var(--primary);
+            transform: translateY(-3px); box-shadow: 0 10px 20px rgba(249,237,50,0.2);
         }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--light);
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--light); font-size: 24px; cursor: pointer; }
+
+        /* ── Page Hero ── */
         .page-hero {
-            background: linear-gradient(135deg, rgba(249,237,50,0.8) 0%, rgba(255,242,37,0.8) 100%), url('https://images.unsplash.com/photo-1541535881962-3bb380b08458?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            background: linear-gradient(135deg, rgba(249,237,50,0.9) 0%, rgba(255,242,37,0.9) 100%),
+                        url('https://images.unsplash.com/photo-1541535881962-3bb380b08458?auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
             color: var(--secondary);
             text-align: center;
             padding: 180px 20px 100px;
-            position: relative;
-            overflow: hidden;
         }
-        
-        .page-hero h1 {
-            font-size: 3.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
-        }
-        
-        .breadcrumb {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease 0.2s forwards;
-            opacity: 0;
-        }
-        
-        .breadcrumb a {
-            color: var(--secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .breadcrumb a:hover {
-            color: var(--accent);
-        }
-        
-        .breadcrumb span {
-            margin: 0 10px;
-        }
-        
-        /* Events Section Styles */
-        .events-section {
-            padding: 80px 20px;
-            background: var(--dark);
-        }
-        
+        .page-hero h1 { font-size: 3.5rem; font-weight: bold; margin-bottom: 15px; animation: fadeInUp 1s ease; }
+        .breadcrumb { display: flex; justify-content: center; gap: 8px; opacity: 0; animation: fadeInUp 1s ease 0.2s forwards; }
+        .breadcrumb a { color: var(--secondary); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--accent); }
+
+        /* ── Section Titles ── */
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-            text-align: center;
-            width: 100%;
+            font-size: 2.5rem; margin-bottom: 50px; color: var(--primary);
+            position: relative; display: inline-block; text-align: center; width: 100%;
         }
-        
         .section-title:after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 3px;
-            background: var(--primary);
-            bottom: -10px;
-            left: 25%;
+            content: ''; position: absolute; width: 50%; height: 3px;
+            background: var(--primary); bottom: -10px; left: 25%;
         }
-        
-        .events-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        
-        .events-filter {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 40px;
-        }
-        
+
+        /* ── Events Section ── */
+        .events-section { padding: 80px 20px; background: var(--dark); }
+        .events-intro { text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.05rem; line-height: 1.8; opacity: 0.85; }
+
+        .events-filter { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
         .filter-btn {
-            padding: 12px 25px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-radius: 30px;
-            color: var(--light);
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            padding: 10px 24px; background: rgba(255,255,255,0.08); border: none;
+            border-radius: 30px; color: var(--light); font-family: 'Poppins', sans-serif;
+            font-weight: 500; cursor: pointer; transition: all 0.3s ease;
         }
-        
-        .filter-btn:hover {
-            background: rgba(249, 237, 50, 0.2);
-        }
-        
-        .filter-btn.active {
-            background: var(--primary);
-            color: var(--secondary);
-            font-weight: bold;
-        }
-        
+        .filter-btn:hover { background: rgba(249,237,50,0.2); }
+        .filter-btn.active { background: var(--primary); color: var(--secondary); font-weight: bold; }
+
         .events-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px; margin-bottom: 20px;
         }
-        
         .event-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(255,255,255,0.05); border-radius: 15px; overflow: hidden;
+            transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            display: flex; flex-direction: column;
         }
-        
-        .event-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(249, 237, 50, 0.2);
+        .event-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(249,237,50,0.15); }
+        .event-image { height: 200px; overflow: hidden; position: relative; }
+        .event-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .event-card:hover .event-image img { transform: scale(1.08); }
+
+        /* Spots badge */
+        .spots-badge {
+            position: absolute; top: 12px; right: 12px;
+            background: rgba(19,19,19,0.85); color: var(--primary);
+            padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;
+            backdrop-filter: blur(6px);
         }
-        
-        .event-image {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .event-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .event-card:hover .event-image img {
-            transform: scale(1.1);
-        }
-        
-        .event-content {
-            padding: 25px;
-        }
-        
+        .spots-badge.few { color: var(--accent); }
+
+        .event-content { padding: 25px; flex: 1; display: flex; flex-direction: column; }
         .event-category {
-            display: inline-block;
-            padding: 5px 15px;
-            background: var(--primary);
-            color: var(--secondary);
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 15px;
+            display: inline-block; padding: 4px 14px; background: var(--primary);
+            color: var(--secondary); border-radius: 30px; font-size: 0.78rem; font-weight: bold; margin-bottom: 12px;
         }
-        
-        .event-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--primary);
+        .event-title { font-size: 1.3rem; margin-bottom: 10px; color: var(--primary); }
+        .event-excerpt { margin-bottom: 18px; line-height: 1.6; opacity: 0.85; font-size: 0.92rem; flex: 1; }
+        .event-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; opacity: 0.75; margin-bottom: 20px; }
+        .event-meta span { display: flex; align-items: center; gap: 5px; }
+        .event-price { font-weight: bold; color: var(--primary); font-size: 1rem; margin-bottom: 16px; }
+
+        .register-btn {
+            display: inline-block; padding: 11px 24px; background: var(--primary);
+            color: var(--secondary); border-radius: 8px; font-weight: bold;
+            font-family: 'Poppins', sans-serif; font-size: 0.95rem;
+            cursor: pointer; border: none; transition: all 0.3s ease; text-align: center;
         }
-        
-        .event-excerpt {
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-        
-        .event-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 20px;
-        }
-        
-        .event-date {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .event-location {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .event-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background: var(--primary);
-            color: var(--secondary);
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .event-link:hover {
-            background: var(--light);
-            transform: translateY(-3px);
-        }
-        
-        /* Calendar Section */
-        .calendar-section {
-            padding: 80px 20px;
-            background: var(--secondary);
-        }
-        
-        .calendar-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .calendar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        
-        .calendar-title {
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-        
-        .calendar-nav {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .calendar-nav-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: var(--light);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .calendar-nav-btn:hover {
-            background: var(--primary);
-            color: var(--secondary);
-        }
-        
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
-        }
-        
-        .calendar-day-header {
-            text-align: center;
-            font-weight: bold;
-            padding: 10px;
-            color: var(--primary);
-        }
-        
-        .calendar-day {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 10px;
-            min-height: 100px;
-            position: relative;
-        }
-        
-        .calendar-day.empty {
-            background: transparent;
-        }
-        
-        .day-number {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .calendar-event {
-            background: var(--primary);
-            color: var(--secondary);
-            padding: 5px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            margin-bottom: 5px;
-            cursor: pointer;
-        }
-        
-        .calendar-event:hover {
-            opacity: 0.9;
-        }
-        
-        /* Workshops Section */
-        .workshops-section {
-            padding: 80px 20px;
-            background: var(--dark);
-        }
-        
+        .register-btn:hover { background: var(--light); transform: translateY(-2px); }
+        .register-btn:disabled { background: rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); cursor: not-allowed; transform: none; }
+
+        /* ── Workshops Section ── */
+        .workshops-section { padding: 80px 20px; background: var(--secondary); }
         .workshop-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.05); border-radius: 15px; padding: 30px;
+            margin-bottom: 24px; border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease; display: flex; flex-direction: column; gap: 16px;
         }
-        
-        .workshop-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .workshop-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .workshop-title {
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-        
-        .workshop-meta {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .workshop-meta span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .workshop-desc {
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-        
-        .workshop-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .workshop-price {
-            font-weight: bold;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-        
-        .workshop-link {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary);
-            color: var(--secondary);
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .workshop-link:hover {
-            background: var(--light);
-            transform: translateY(-3px);
-        }
-        
-        /* Newsletter Section */
+        .workshop-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.25); }
+        .workshop-header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+        .workshop-title { font-size: 1.4rem; color: var(--primary); }
+        .workshop-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.88rem; opacity: 0.75; }
+        .workshop-meta span { display: flex; align-items: center; gap: 5px; }
+        .workshop-desc { line-height: 1.8; opacity: 0.85; }
+        .workshop-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+        .workshop-price { font-weight: bold; color: var(--primary); font-size: 1.15rem; }
+
+        /* ── Newsletter ── */
         .newsletter {
-            background: linear-gradient(135deg, rgba(249,237,50,0.1) 0%, rgba(255,107,107,0.1) 100%);
-            text-align: center;
-            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(249,237,50,0.08) 0%, rgba(255,107,107,0.08) 100%);
+            text-align: center; padding: 80px 20px;
         }
-        
-        .newsletter-form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
+        .newsletter-form { max-width: 600px; margin: 20px auto 0; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
         .newsletter-input {
-            flex: 1;
-            min-width: 300px;
-            padding: 15px 20px;
-            border-radius: 50px;
-            border: none;
-            background: rgba(255, 255, 255, 0.9);
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            flex: 1; min-width: 280px; padding: 14px 20px; border-radius: 50px; border: none;
+            background: rgba(255,255,255,0.9); font-family: 'Poppins', sans-serif; font-size: 1rem;
         }
-        
-        .newsletter-input:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px var(--primary);
-        }
-        
+        .newsletter-input:focus { outline: none; box-shadow: 0 0 0 3px var(--primary); }
         .newsletter-btn {
-            padding: 15px 40px;
-            border-radius: 50px;
-            background: var(--primary);
-            color: var(--secondary);
-            border: none;
-            font-family: 'Poppins', sans-serif;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            padding: 14px 36px; border-radius: 50px; background: var(--primary); color: var(--secondary);
+            border: none; font-family: 'Poppins', sans-serif; font-weight: bold; cursor: pointer; transition: all 0.3s ease;
         }
-        
-        .newsletter-btn:hover {
-            background: var(--secondary);
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        /* Footer Styles */
-        footer {
-            background: var(--secondary);
-            padding: 60px 0 20px;
-            color: var(--light);
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-        }
-        
-        .footer-logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .footer-logo i {
-            font-size: 28px;
-        }
-        
-        .footer-desc {
-            margin-bottom: 20px;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
+        .newsletter-btn:hover { background: var(--secondary); color: var(--primary); transform: translateY(-3px); }
+
+        /* ── Footer ── */
+        footer { background: var(--secondary); padding: 60px 0 20px; color: var(--light); }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; margin-bottom: 40px; }
+        .footer-column { flex: 1; min-width: 220px; }
+        .footer-logo { font-size: 22px; font-weight: bold; color: var(--primary); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+        .footer-logo i { font-size: 26px; }
+        .footer-desc { margin-bottom: 18px; opacity: 0.8; line-height: 1.6; font-size: 0.9rem; }
+        .social-links { display: flex; gap: 12px; }
         .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
+            width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.1);
+            display: flex; justify-content: center; align-items: center;
+            color: var(--light); text-decoration: none; transition: all 0.3s ease;
         }
-        
-        .social-link:hover {
-            background: var(--primary);
-            color: var(--secondary);
-            transform: translateY(-3px);
+        .social-link:hover { background: var(--primary); color: var(--secondary); transform: translateY(-3px); }
+        .footer-title { font-size: 1.1rem; color: var(--primary); margin-bottom: 18px; position: relative; padding-bottom: 10px; }
+        .footer-title:after { content: ''; position: absolute; width: 36px; height: 2px; background: var(--primary); bottom: 0; left: 0; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 9px; }
+        .footer-links a { color: var(--light); text-decoration: none; opacity: 0.8; transition: all 0.3s ease; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--primary); opacity: 1; padding-left: 5px; }
+        .contact-info { list-style: none; }
+        .contact-info li { margin-bottom: 13px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; }
+        .contact-info i { color: var(--primary); margin-top: 3px; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.7; font-size: 0.85rem; }
+        .footer-bottom a { color: var(--light); }
+
+        /* ── Registration Modal ── */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.75); z-index: 2000;
+            align-items: center; justify-content: center;
+            backdrop-filter: blur(4px);
         }
-        
-        .footer-title {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
+        .modal-overlay.open { display: flex; }
+        .modal {
+            background: var(--secondary); border-radius: 20px;
+            padding: 40px; max-width: 500px; width: 90%;
+            position: relative; animation: slideUp 0.3s ease;
+            max-height: 90vh; overflow-y: auto;
         }
-        
-        .footer-title:after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 2px;
-            background: var(--primary);
-            bottom: 0;
-            left: 0;
+        .modal-close {
+            position: absolute; top: 16px; right: 20px;
+            background: none; border: none; color: var(--light);
+            font-size: 1.4rem; cursor: pointer; opacity: 0.6; transition: opacity 0.2s;
         }
-        
-        .footer-links {
-            list-style: none;
+        .modal-close:hover { opacity: 1; }
+        .modal-event-name { font-size: 1.25rem; color: var(--primary); margin-bottom: 6px; }
+        .modal-event-meta { font-size: 0.85rem; opacity: 0.65; margin-bottom: 28px; }
+
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-size: 0.85rem; opacity: 0.75; margin-bottom: 6px; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px 15px; border-radius: 10px;
+            border: 2px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.07);
+            color: var(--light); font-family: 'Poppins', sans-serif; font-size: 0.95rem;
+            transition: border-color 0.2s;
         }
-        
-        .footer-links li {
-            margin-bottom: 10px;
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none; border-color: var(--primary);
         }
-        
-        .footer-links a {
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            opacity: 0.8;
+        .form-group input::placeholder, .form-group textarea::placeholder { opacity: 0.45; }
+        .form-group select option { background: var(--secondary); }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+        .submit-btn {
+            width: 100%; padding: 14px; background: var(--primary); color: var(--secondary);
+            border: none; border-radius: 50px; font-family: 'Poppins', sans-serif;
+            font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease; margin-top: 8px;
         }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-            opacity: 1;
-            padding-left: 5px;
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(249,237,50,0.3); }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .form-note { font-size: 0.78rem; opacity: 0.5; text-align: center; margin-top: 12px; }
+
+        /* Success state inside modal */
+        .modal-success {
+            display: none; text-align: center; padding: 20px 0;
         }
-        
-        .contact-info {
-            list-style: none;
-        }
-        
-        .contact-info li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        
-        .contact-info i {
-            color: var(--primary);
-            margin-top: 3px;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-        
+        .modal-success i { font-size: 3.5rem; color: #4ade80; margin-bottom: 16px; display: block; }
+        .modal-success h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .modal-success p { opacity: 0.75; line-height: 1.6; }
+
+        /* ── Animations ── */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
-        
-        @media (max-width: 992px) {
-            .nav-links {
-                gap: 15px;
-            }
-            
-            .page-hero h1 {
-                font-size: 2.5rem;
-            }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
-        
+
+        /* ── Responsive ── */
+        @media (max-width: 992px) { .nav-links { gap: 15px; } .page-hero h1 { font-size: 2.5rem; } }
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
+            .mobile-menu-btn { display: block; }
             .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: var(--secondary);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 30px;
-                transition: all 0.5s ease;
+                position: fixed; top: 80px; left: -100%; width: 100%;
+                height: calc(100vh - 80px); background: var(--secondary);
+                flex-direction: column; align-items: center; justify-content: center;
+                gap: 30px; transition: all 0.5s ease;
             }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .page-hero {
-                padding: 150px 20px 80px;
-            }
-            
-            .page-hero h1 {
-                font-size: 2rem;
-            }
-            
-            .events-filter {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .filter-btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .events-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .calendar-grid {
-                grid-template-columns: repeat(7, minmax(40px, 1fr));
-            }
-            
-            .calendar-day {
-                min-height: 60px;
-                font-size: 0.8rem;
-            }
-            
-            .calendar-event {
-                display: none;
-            }
-            
-            .footer-column {
-                min-width: 100%;
-            }
+            .nav-links.active { left: 0; }
+            .page-hero { padding: 140px 20px 70px; }
+            .page-hero h1 { font-size: 2rem; }
+            .events-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-column { min-width: 100%; }
         }
     </style>
 </head>
 <body>
+
+    <!-- ── Header ── -->
     <header id="header">
         <div class="container">
             <nav>
-                <div class="logo">
-                    <i class="fas fa-brain"></i>
-                    <span>MindWell</span>
-                </div>
+                <div class="logo"><i class="fas fa-brain"></i><span>MindWell</span></div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="services.html">Our Services</a></li>
-                    <li><a href="events.html" class="active">Events</a></li>
                     <li><a href="resources.html">Resources</a></li>
                     <li><a href="getinvolved.html">Get Involved</a></li>
+                    <li><a href="mental.html">Mental Health Screening</a></li>
                     <li><a href="donate.html" class="donate-btn">Donate</a></li>
                 </ul>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
             </nav>
         </div>
     </header>
-    
+
+    <!-- ── Hero ── -->
     <section class="page-hero">
         <h1>Events & Workshops</h1>
         <div class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span>/</span>
-            <a href="events.html">Events & Workshops</a>
+            <a href="index.html">Home</a><span>/</span><span>Events & Workshops</span>
         </div>
     </section>
-    
+
+    <!-- ── Events Grid ── -->
     <section class="events-section">
         <div class="container">
             <h2 class="section-title">Upcoming Events</h2>
-            <div class="events-intro">
-                <p>Join our community events, educational workshops, and support groups designed to promote mental wellness and provide valuable resources. All events are led by experienced professionals in a supportive environment.</p>
-            </div>
-            
+            <p class="events-intro">Join our community events, workshops, and support groups led by experienced mental health professionals. All events take place in a safe, welcoming environment open to everyone.</p>
+
             <div class="events-filter">
                 <button class="filter-btn active" data-filter="all">All Events</button>
                 <button class="filter-btn" data-filter="workshop">Workshops</button>
                 <button class="filter-btn" data-filter="support">Support Groups</button>
                 <button class="filter-btn" data-filter="training">Training</button>
+                <button class="filter-btn" data-filter="free">Free</button>
             </div>
-            
-            <div class="events-grid">
-                <!-- Event 1 -->
-                <div class="event-card" data-category="workshop">
-                    <div class="event-image">
-                        <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Mindfulness Workshop">
-                    </div>
-                    <div class="event-content">
-                        <span class="event-category">Workshop</span>
-                        <h3 class="event-title">Mindfulness Meditation Series</h3>
-                        <p class="event-excerpt">A 4-week series teaching mindfulness meditation techniques to reduce stress and improve focus in daily life.</p>
-                        <div class="event-meta">
-                            <span class="event-date"><i class="far fa-calendar-alt"></i> June 15 - July 6, 2023</span>
-                            <span class="event-location"><i class="fas fa-map-marker-alt"></i> Online</span>
-                        </div>
-                        <a href="#" class="event-link">Register Now</a>
-                    </div>
-                </div>
-                
-                <!-- Event 2 -->
-                <div class="event-card" data-category="support">
-                    <div class="event-image">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Support Group">
-                    </div>
-                    <div class="event-content">
-                        <span class="event-category">Support Group</span>
-                        <h3 class="event-title">Anxiety & Depression Peer Support</h3>
-                        <p class="event-excerpt">A safe space to share experiences and coping strategies with others who understand mental health challenges.</p>
-                        <div class="event-meta">
-                            <span class="event-date"><i class="far fa-calendar-alt"></i> Every Wednesday</span>
-                            <span class="event-location"><i class="fas fa-map-marker-alt"></i> Community Center</span>
-                        </div>
-                        <a href="#" class="event-link">Join Group</a>
-                    </div>
-                </div>
-                
-                <!-- Event 3 -->
-                <div class="event-card" data-category="training">
-                    <div class="event-image">
-                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Mental Health Training">
-                    </div>
-                    <div class="event-content">
-                        <span class="event-category">Training</span>
-                        <h3 class="event-title">Youth Mental Health First Aid</h3>
-                        <p class="event-excerpt">Learn how to identify and respond to mental health challenges in young people with this certification course.</p>
-                        <div class="event-meta">
-                            <span class="event-date"><i class="far fa-calendar-alt"></i> June 22, 2023</span>
-                            <span class="event-location"><i class="fas fa-map-marker-alt"></i> MindWell HQ</span>
-                        </div>
-                        <a href="#" class="event-link">Enroll Now</a>
-                    </div>
-                </div>
-                
-                <!-- Event 4 -->
-                <div class="event-card" data-category="workshop">
-                    <div class="event-image">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Art Therapy">
-                    </div>
-                    <div class="event-content">
-                        <span class="event-category">Workshop</span>
-                        <h3 class="event-title">Art Therapy for Stress Relief</h3>
-                        <p class="event-excerpt">Explore creative expression as a tool for managing stress and processing emotions in this hands-on workshop.</p>
-                        <div class="event-meta">
-                            <span class="event-date"><i class="far fa-calendar-alt"></i> June 25, 2023</span>
-                            <span class="event-location"><i class="fas fa-map-marker-alt"></i> Creative Space</span>
-                        </div>
-                        <a href="#" class="event-link">Register Now</a>
-                    </div>
-                </div>
-                
-                <!-- Event 5 -->
-                <div class="event-card" data-category="support">
-                    <div class="event-image">
-                        <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Grief Support">
-                    </div>
-                    <div class="event-content">
-                        <span class="event-category">Support Group</span>
-                        <h3 class="event-title">Grief & Loss Support Circle</h3>
-                        <p class="event-excerpt">A compassionate space to process loss and find support with others on a similar journey of healing.</p>
-                        <div class="event-meta">
-                            <span class="event-date"><i class="far fa-calendar-alt"></i> June 29, 2023</span>
-                            <span class="event-location"><i class="fas fa-map-marker-alt"></i> Online</span>
-                        </div>
-                        <a href="#" class="event-link">Join Group</a>
-                    </div>
-                </div>
-                
-                <!-- Event 6 -->
-                <div class="event-card" data-category="workshop">
-                    <div class="event-image">
-                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Relationships Workshop">
-                    </div>
-                    <div class="event-content">
-                        <span class="event-category">Workshop</span>
-                        <h3 class="event-title">Building Healthy Relationships</h3>
-                        <p class="event-excerpt">Learn communication skills and boundary-setting for healthier personal relationships in this interactive workshop.</p>
-                        <div class="event-meta">
-                            <span class="event-date"><i class="far fa-calendar-alt"></i> July 2, 2023</span>
-                            <span class="event-location"><i class="fas fa-map-marker-alt"></i> MindWell HQ</span>
-                        </div>
-                        <a href="#" class="event-link">Register Now</a>
-                    </div>
-                </div>
+
+            <div class="events-grid" id="eventsGrid">
+                <!-- Cards injected by JS -->
             </div>
         </div>
     </section>
-    
-    <section class="calendar-section">
-        <div class="container">
-            <h2 class="section-title">Event Calendar</h2>
-            <div class="calendar-container">
-                <div class="calendar-header">
-                    <div class="calendar-title">June 2023</div>
-                    <div class="calendar-nav">
-                        <button class="calendar-nav-btn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="calendar-nav-btn"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="calendar-grid">
-                    <div class="calendar-day-header">Sun</div>
-                    <div class="calendar-day-header">Mon</div>
-                    <div class="calendar-day-header">Tue</div>
-                    <div class="calendar-day-header">Wed</div>
-                    <div class="calendar-day-header">Thu</div>
-                    <div class="calendar-day-header">Fri</div>
-                    <div class="calendar-day-header">Sat</div>
-                    
-                    <div class="calendar-day empty"></div>
-                    <div class="calendar-day empty"></div>
-                    <div class="calendar-day empty"></div>
-                    <div class="calendar-day">
-                        <div class="day-number">1</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">2</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">3</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">4</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">5</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">6</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">7</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">8</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">9</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">10</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">11</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">12</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">13</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">14</div>
-                        <div class="calendar-event">Workshop: Stress Management</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">15</div>
-                        <div class="calendar-event">Meditation Series</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">16</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">17</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">18</div>
-                        <div class="calendar-event">Support Group</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">19</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">20</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">21</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">22</div>
-                        <div class="calendar-event">Youth MH Training</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">23</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">24</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">25</div>
-                        <div class="calendar-event">Art Therapy</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">26</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">27</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">28</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">29</div>
-                        <div class="calendar-event">Grief Support</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">30</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
+
+    <!-- ── Featured Workshops ── -->
     <section class="workshops-section">
         <div class="container">
             <h2 class="section-title">Featured Workshops</h2>
-            
+
             <div class="workshop-card">
                 <div class="workshop-header">
-                    <h3 class="workshop-title">Cognitive Behavioral Therapy Basics</h3>
+                    <h3 class="workshop-title">Cognitive Behavioural Therapy — Foundations</h3>
                     <div class="workshop-meta">
-                        <span><i class="far fa-calendar-alt"></i> July 8, 2023</span>
-                        <span><i class="far fa-clock"></i> 10:00 AM - 12:00 PM</span>
-                        <span><i class="fas fa-map-marker-alt"></i> MindWell HQ</span>
+                        <span><i class="far fa-calendar-alt"></i> 12 April 2025</span>
+                        <span><i class="far fa-clock"></i> 10:00 AM – 12:30 PM</span>
+                        <span><i class="fas fa-map-marker-alt"></i> MindWell HQ, Mumbai</span>
                     </div>
                 </div>
-                <p class="workshop-desc">Learn the fundamentals of CBT, a highly effective treatment for anxiety and depression. This workshop will teach you practical techniques to identify and challenge negative thought patterns that contribute to emotional distress. You'll leave with actionable strategies to implement in your daily life.</p>
+                <p class="workshop-desc">Learn the core principles of CBT — one of the most clinically proven approaches to managing anxiety, depression, and negative thought patterns. You'll leave with a personal toolkit of techniques you can use every day.</p>
                 <div class="workshop-footer">
-                    <div class="workshop-price">$45 per person</div>
-                    <a href="#" class="workshop-link">Learn More</a>
+                    <span class="workshop-price">₹499 per person</span>
+                    <button class="register-btn" onclick="openModal('CBT Foundations Workshop', '12 April 2025 · 10:00 AM', '₹499')">Register Now</button>
                 </div>
             </div>
-            
+
             <div class="workshop-card">
                 <div class="workshop-header">
-                    <h3 class="workshop-title">Mindful Parenting</h3>
+                    <h3 class="workshop-title">Mindful Parenting in the Digital Age</h3>
                     <div class="workshop-meta">
-                        <span><i class="far fa-calendar-alt"></i> July 15, 2023</span>
-                        <span><i class="far fa-clock"></i> 9:30 AM - 11:30 AM</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Online</span>
+                        <span><i class="far fa-calendar-alt"></i> 26 April 2025</span>
+                        <span><i class="far fa-clock"></i> 9:30 AM – 11:30 AM</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Online (Zoom)</span>
                     </div>
                 </div>
-                <p class="workshop-desc">Discover how mindfulness practices can help you become a more present, patient, and compassionate parent while managing the stresses of family life. This workshop combines mindfulness exercises with practical parenting strategies to create calmer, more connected family relationships.</p>
+                <p class="workshop-desc">Balance screen time, emotional regulation, and connection in your family with mindfulness strategies tailored for modern parenting challenges. Includes a free resource pack sent after the session.</p>
                 <div class="workshop-footer">
-                    <div class="workshop-price">$35 per person</div>
-                    <a href="#" class="workshop-link">Learn More</a>
+                    <span class="workshop-price">₹299 per person</span>
+                    <button class="register-btn" onclick="openModal('Mindful Parenting Workshop', '26 April 2025 · 9:30 AM · Online', '₹299')">Register Now</button>
                 </div>
             </div>
-            
+
             <div class="workshop-card">
                 <div class="workshop-header">
-                    <h3 class="workshop-title">Trauma-Informed Yoga</h3>
+                    <h3 class="workshop-title">Trauma-Informed Yoga & Breathwork</h3>
                     <div class="workshop-meta">
-                        <span><i class="far fa-calendar-alt"></i> July 22, 2023</span>
-                        <span><i class="far fa-clock"></i> 4:00 PM - 6:00 PM</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Serenity Studio</span>
+                        <span><i class="far fa-calendar-alt"></i> 10 May 2025</span>
+                        <span><i class="far fa-clock"></i> 4:00 PM – 6:00 PM</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Serenity Studio, Bandra</span>
                     </div>
                 </div>
-                <p class="workshop-desc">Experience how trauma-informed yoga can help regulate the nervous system and promote healing from trauma and chronic stress. This gentle, accessible practice focuses on creating safety in the body and developing greater awareness of physical sensations without triggering past trauma.</p>
+                <p class="workshop-desc">A gentle, body-centred session that uses yoga and breathwork to help regulate the nervous system and build a sense of safety in the body. Suitable for all experience levels, no prior yoga practice needed.</p>
                 <div class="workshop-footer">
-                    <div class="workshop-price">$40 per person</div>
-                    <a href="#" class="workshop-link">Learn More</a>
+                    <span class="workshop-price">₹399 per person</span>
+                    <button class="register-btn" onclick="openModal('Trauma-Informed Yoga & Breathwork', '10 May 2025 · 4:00 PM · Bandra', '₹399')">Register Now</button>
                 </div>
             </div>
         </div>
     </section>
-    
+
+    <!-- ── Newsletter ── -->
     <section class="newsletter">
         <div class="container">
             <h2 class="section-title">Stay Updated</h2>
-            <p>Subscribe to our newsletter to receive updates about upcoming events and workshops</p>
-            <form class="newsletter-form">
+            <p>Get notified about new events, workshops, and mental health resources.</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
                 <input type="email" class="newsletter-input" placeholder="Your email address" required>
                 <button type="submit" class="newsletter-btn">Subscribe</button>
             </form>
         </div>
     </section>
-    
+
+    <!-- ── Footer ── -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <div class="footer-logo">
-                        <i class="fas fa-brain"></i>
-                        <span>MindWell Foundation</span>
-                    </div>
-                    <p class="footer-desc">Dedicated to improving mental health through support, education, and advocacy. Together, we can create a world where mental well-being is a priority for all.</p>
+                    <div class="footer-logo"><i class="fas fa-brain"></i><span>MindWell Foundation</span></div>
+                    <p class="footer-desc">Dedicated to improving mental health through support, education, and advocacy.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
@@ -1121,9 +424,10 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Our Services</a></li>
-                        <li><a href="events.html">Events</a></li>
                         <li><a href="resources.html">Resources</a></li>
                         <li><a href="getinvolved.html">Get Involved</a></li>
+                        <li><a href="mental.html">Mental Health Screening</a></li>
+                        <li><a href="donate.html">Donate</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1139,108 +443,283 @@
                 <div class="footer-column">
                     <h3 class="footer-title">Contact Us</h3>
                     <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Wellness Street, Mindville, MV 12345</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone-alt"></i>
-                            <span>1-800-MINDWELL (1-800-646-3935)</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>info@mindwell.org</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-clock"></i>
-                            <span>Monday - Friday: 9am - 7pm<br>Weekends: 10am - 4pm</span>
-                        </li>
+                        <li><i class="fas fa-map-marker-alt"></i><span>123 Wellness Street, Mindville, MV 12345</span></li>
+                        <li><i class="fas fa-phone-alt"></i><span>1-800-MINDWELL</span></li>
+                        <li><i class="fas fa-envelope"></i><span>info@mindwell.org</span></li>
+                        <li><i class="fas fa-clock"></i><span>Mon–Fri: 9am–7pm · Weekends: 10am–4pm</span></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 MindWell Foundation. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>&copy; 2025 MindWell Foundation. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="privacy.html">Terms of Service</a></p>
             </div>
         </div>
     </footer>
-    
+
+    <!-- ── Registration Modal ── -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+
+            <!-- Form view -->
+            <div id="modalForm">
+                <p style="font-size:0.8rem;opacity:0.5;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;">Register for</p>
+                <h3 class="modal-event-name" id="modalEventName">Event Name</h3>
+                <p class="modal-event-meta" id="modalEventMeta">Date & Location</p>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name *</label>
+                        <input type="text" id="firstName" placeholder="Aarav" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name *</label>
+                        <input type="text" id="lastName" placeholder="Shah" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="regEmail" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="regPhone" placeholder="+91 98765 43210">
+                </div>
+                <div class="form-group">
+                    <label>How did you hear about us?</label>
+                    <select id="heardFrom">
+                        <option value="">Select an option</option>
+                        <option>Social Media</option>
+                        <option>Friend or Family</option>
+                        <option>Google Search</option>
+                        <option>Newsletter</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Any questions or special requirements?</label>
+                    <textarea id="regNotes" placeholder="E.g. accessibility needs, dietary requirements for in-person events…"></textarea>
+                </div>
+
+                <div id="priceNote" style="background:rgba(249,237,50,0.08);border:1px solid rgba(249,237,50,0.2);border-radius:10px;padding:12px 16px;font-size:0.85rem;margin-bottom:16px;">
+                    <i class="fas fa-tag" style="color:var(--primary);margin-right:6px;"></i>
+                    Event fee: <strong id="modalPrice" style="color:var(--primary);">Free</strong> — payment collected at the event / via link sent to your email.
+                </div>
+
+                <button class="submit-btn" id="submitBtn" onclick="submitRegistration()">
+                    <i class="fas fa-check-circle"></i> Confirm Registration
+                </button>
+                <p class="form-note">We'll send a confirmation to your email within 24 hours.</p>
+            </div>
+
+            <!-- Success view -->
+            <div class="modal-success" id="modalSuccess">
+                <i class="fas fa-check-circle"></i>
+                <h3>You're registered! 🎉</h3>
+                <p>Thanks, <span id="successName"></span>! We've received your registration and will send a confirmation to <strong><span id="successEmail"></span></strong> shortly.</p>
+                <br>
+                <button class="submit-btn" onclick="closeModal()" style="max-width:200px;margin:0 auto;display:block;">Close</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Mobile menu toggle
+        // ── Event Data ──────────────────────────────────────────────────────
+        const events = [
+            {
+                id: 1, category: 'workshop', free: false,
+                title: 'Mindfulness Meditation — 4-Week Series',
+                excerpt: 'Build a daily mindfulness practice to reduce anxiety and improve focus. Each session introduces new techniques you can use immediately.',
+                date: '5 April – 26 April 2025', location: 'Online (Zoom)', spots: 18, totalSpots: 20,
+                price: '₹799 for full series',
+                image: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80',
+            },
+            {
+                id: 2, category: 'support', free: true,
+                title: 'Anxiety & Depression Peer Support Circle',
+                excerpt: 'A safe, confidential space to share experiences with others who truly understand. Facilitated by a licensed counselor every week.',
+                date: 'Every Wednesday, 6:00 PM', location: 'Community Centre, Andheri', spots: 8, totalSpots: 12,
+                price: 'Free',
+                image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80',
+            },
+            {
+                id: 3, category: 'training', free: false,
+                title: 'Youth Mental Health First Aid — Certification',
+                excerpt: 'Learn to identify early signs of mental health crises in young people and respond with confidence. Certificate issued on completion.',
+                date: '19 April 2025', location: 'MindWell HQ, Mumbai', spots: 5, totalSpots: 25,
+                price: '₹1,200 per person',
+                image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80',
+            },
+            {
+                id: 4, category: 'workshop', free: false,
+                title: 'Art Therapy for Stress Relief',
+                excerpt: 'Explore creative expression — painting, collage, and sketching — as a powerful tool for processing emotions without needing any prior art skills.',
+                date: '3 May 2025', location: 'Creative Space, Bandra', spots: 14, totalSpots: 15,
+                price: '₹599 per person',
+                image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
+            },
+            {
+                id: 5, category: 'support', free: true,
+                title: 'Grief & Loss Support Circle',
+                excerpt: 'A compassionate space for those navigating loss — whether of a loved one, a relationship, or a chapter of life. You don\'t have to grieve alone.',
+                date: '17 May 2025', location: 'Online (Zoom)', spots: 20, totalSpots: 20,
+                price: 'Free',
+                image: 'https://images.unsplash.com/photo-1493612276216-ee3925520721?auto=format&fit=crop&w=800&q=80',
+            },
+            {
+                id: 6, category: 'workshop', free: false,
+                title: 'Building Healthy Relationships',
+                excerpt: 'Learn communication skills, boundary-setting, and conflict resolution techniques for healthier connections — at work and in personal life.',
+                date: '24 May 2025', location: 'MindWell HQ, Mumbai', spots: 22, totalSpots: 30,
+                price: '₹499 per person',
+                image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80',
+            },
+        ];
+
+        // ── Render Events ────────────────────────────────────────────────────
+        function renderEvents(filter = 'all') {
+            const grid = document.getElementById('eventsGrid');
+            const filtered = events.filter(e =>
+                filter === 'all' ? true :
+                filter === 'free' ? e.free :
+                e.category === filter
+            );
+
+            grid.innerHTML = filtered.map(e => {
+                const spotsLeft = e.totalSpots - e.spots;
+                const fewLeft   = spotsLeft <= 5;
+                const soldOut   = spotsLeft <= 0;
+                const badgeText = soldOut ? 'Full' : `${spotsLeft} spots left`;
+
+                return `
+                <div class="event-card" data-category="${e.category}">
+                    <div class="event-image">
+                        <img src="${e.image}" alt="${e.title}" loading="lazy">
+                        <span class="spots-badge ${fewLeft ? 'few' : ''}">${badgeText}</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category">${e.category.charAt(0).toUpperCase() + e.category.slice(1)}</span>
+                        <h3 class="event-title">${e.title}</h3>
+                        <p class="event-excerpt">${e.excerpt}</p>
+                        <div class="event-meta">
+                            <span><i class="far fa-calendar-alt"></i> ${e.date}</span>
+                            <span><i class="fas fa-map-marker-alt"></i> ${e.location}</span>
+                        </div>
+                        <p class="event-price">${e.price}</p>
+                        <button class="register-btn" ${soldOut ? 'disabled' : ''}
+                            onclick="openModal('${e.title}', '${e.date} · ${e.location}', '${e.price}')">
+                            ${soldOut ? 'Event Full' : 'Register Now'}
+                        </button>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        renderEvents();
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderEvents(btn.dataset.filter);
+            });
+        });
+
+        // ── Modal ────────────────────────────────────────────────────────────
+        function openModal(name, meta, price) {
+            document.getElementById('modalEventName').textContent = name;
+            document.getElementById('modalEventMeta').textContent = meta;
+            document.getElementById('modalPrice').textContent     = price;
+            document.getElementById('modalForm').style.display    = 'block';
+            document.getElementById('modalSuccess').style.display = 'none';
+            document.getElementById('modalOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('open');
+            document.body.style.overflow = '';
+            // Reset form
+            ['firstName','lastName','regEmail','regPhone','regNotes'].forEach(id => {
+                document.getElementById(id).value = '';
+            });
+            document.getElementById('heardFrom').value = '';
+        }
+
+        function closeModalOnOverlay(e) {
+            if (e.target === document.getElementById('modalOverlay')) closeModal();
+        }
+
+        // ── Submit Registration ──────────────────────────────────────────────
+        async function submitRegistration() {
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName  = document.getElementById('lastName').value.trim();
+            const email     = document.getElementById('regEmail').value.trim();
+            const phone     = document.getElementById('regPhone').value.trim();
+            const heardFrom = document.getElementById('heardFrom').value;
+            const notes     = document.getElementById('regNotes').value.trim();
+            const eventName = document.getElementById('modalEventName').textContent;
+            const eventMeta = document.getElementById('modalEventMeta').textContent;
+            const price     = document.getElementById('modalPrice').textContent;
+
+            if (!firstName) return alert('Please enter your first name.');
+            if (!lastName)  return alert('Please enter your last name.');
+            if (!email)     return alert('Please enter your email address.');
+
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting…';
+
+            try {
+                const res = await fetch('/register-event', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ firstName, lastName, email, phone, heardFrom, notes, eventName, eventMeta, price })
+                });
+
+                if (res.ok) {
+                    // Show success
+                    document.getElementById('successName').textContent  = firstName;
+                    document.getElementById('successEmail').textContent = email;
+                    document.getElementById('modalForm').style.display    = 'none';
+                    document.getElementById('modalSuccess').style.display = 'block';
+                } else {
+                    alert('Something went wrong. Please try again.');
+                }
+            } catch (err) {
+                // If no backend yet, still show success in demo mode
+                console.warn('Backend not connected — showing demo success.');
+                document.getElementById('successName').textContent  = firstName;
+                document.getElementById('successEmail').textContent = email;
+                document.getElementById('modalForm').style.display    = 'none';
+                document.getElementById('modalSuccess').style.display = 'block';
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Confirm Registration';
+            }
+        }
+
+        // ── Newsletter ────────────────────────────────────────────────────────
+        function subscribeNewsletter(e) {
+            e.preventDefault();
+            const input = e.target.querySelector('input');
+            alert(`Thanks! We'll keep ${input.value} updated. ✅`);
+            input.value = '';
+        }
+
+        // ── Header & Nav ──────────────────────────────────────────────────────
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        
+        const navLinks      = document.querySelector('.nav-links');
+
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active')
+                ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-        
-        // Header scroll effect
-        const header = document.getElementById('header');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // Event filtering functionality
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const eventCards = document.querySelectorAll('.event-card');
 
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Update active button
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                const filter = button.dataset.filter;
-                
-                // Filter events
-                eventCards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-        
-        // Calendar navigation (basic functionality)
-        const calendarNavBtns = document.querySelectorAll('.calendar-nav-btn');
-        
-        calendarNavBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // In a real implementation, this would update the calendar view
-                alert('Calendar navigation would update the month view in a full implementation');
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                }
-            });
+        window.addEventListener('scroll', () => {
+            document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
         });
     </script>
 </body>
